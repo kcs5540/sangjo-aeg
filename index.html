@@ -50,8 +50,8 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pretendard', sans-serif; -webkit-tap-highlight-color: transparent; }
-    html { scroll-behavior: smooth; }
-    body { background-color: var(--dark-bg); color: var(--text-main); line-height: 1.65; padding-bottom: 90px; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { background-color: var(--dark-bg); color: var(--text-main); line-height: 1.65; padding-bottom: 90px; overflow-x: hidden; }
 
     /* Top Global Corporate Bar (상단 회사 소개 바) */
     .corp-top-bar {
@@ -161,6 +161,10 @@
       display: none; flex-direction: column; gap: 12px;
       background: #111827; border-bottom: 1px solid var(--card-border);
       padding: 16px 20px;
+      position: sticky;
+      top: 57px;
+      z-index: 1000;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     }
     .mobile-drawer.open { display: flex; }
     .mobile-drawer a {
@@ -608,12 +612,21 @@
       .footer-info-grid { grid-template-columns: 1fr; gap: 8px; padding: 14px; }
     }
 
+    /* 모바일 서랍 메뉴가 열렸을 때 플로팅 버튼 자동 숨김 */
+    body.menu-open .floating-quick-wrap {
+      display: none !important;
+    }
 
     /* Responsive (창 폭이 좁아지면 글자가 찌그러지지 않고 깔끔하게 햄버거 메뉴로 전환) */
     @media (max-width: 992px) {
       .nav-menu { display: none; }
-      .mobile-menu-btn { display: block; }
+      .mobile-menu-btn { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; flex-shrink: 0; }
       .corp-top-bar { display: none; }
+      .navbar { padding: 10px 14px; }
+      .nav-inner { gap: 10px; justify-content: space-between; width: 100%; }
+      .nav-brand { font-size: 16px; gap: 5px; }
+      .nav-brand .sub-text { display: none; }
+      .nav-menu-btn { padding: 6px 10px; font-size: 11.5px !important; }
       .swiper-slide { min-height: 440px; padding: 48px 16px 60px; }
       .slide-title { font-size: 26px; }
       .slide-desc { font-size: 14px; }
@@ -621,6 +634,46 @@
       .hl-card { padding: 12px 4px; }
       .hl-val { font-size: 15px; }
       .swiper-button-next, .swiper-button-prev { display: none; } /* 모바일에서는 터치 스와이프로 쾌적하게 */
+
+      /* 플로팅 캡슐 알약 버튼 모바일 최적화 (절대 줄바꿈 방지 + 콤팩트 크기) */
+      .floating-quick-wrap {
+        right: 12px;
+        bottom: 16px;
+        gap: 6px;
+        z-index: 999;
+      }
+      .pill-action-btn {
+        min-width: unset !important;
+        width: max-content !important;
+        padding: 7px 11px !important;
+        font-size: 11.5px !important;
+        white-space: nowrap !important;
+        word-break: keep-all !important;
+        gap: 5px;
+      }
+      .pill-action-btn span {
+        white-space: nowrap !important;
+        display: inline-block !important;
+      }
+      .pill-action-btn i {
+        font-size: 12px !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar { padding: 8px 12px; }
+      .nav-brand { font-size: 14.5px; }
+      .nav-menu-btn { padding: 5px 8px; font-size: 11px !important; }
+      .nav-menu-btn i { font-size: 10.5px; }
+      .floating-quick-wrap {
+        right: 10px;
+        bottom: 14px;
+        gap: 5px;
+      }
+      .pill-action-btn {
+        padding: 6.5px 10px !important;
+        font-size: 11px !important;
+      }
     }
 
   </style>
@@ -1287,10 +1340,12 @@
       const icon = document.getElementById('menuIcon');
       if (drawer.classList.contains('open')) {
         drawer.classList.remove('open');
+        document.body.classList.remove('menu-open');
         icon.classList.remove('fa-xmark');
         icon.classList.add('fa-bars');
       } else {
         drawer.classList.add('open');
+        document.body.classList.add('menu-open');
         icon.classList.remove('fa-bars');
         icon.classList.add('fa-xmark');
       }
