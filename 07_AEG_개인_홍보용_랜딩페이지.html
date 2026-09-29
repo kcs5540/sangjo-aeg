@@ -27,6 +27,28 @@
       --text-muted: #64748B;
     }
 
+    /* 프리머니 프로젝트 초강조 스타일 (네온 골드 & 앰버 그라데이션) */
+    .text-freemoney {
+      background: linear-gradient(135deg, #FFF3BF 0%, #F59E0B 50%, #FF8C00 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 900 !important;
+      display: inline-block;
+      filter: drop-shadow(0 2px 8px rgba(245, 158, 11, 0.45));
+    }
+    .badge-freemoney {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.22), rgba(234, 88, 12, 0.18)) !important;
+      border: 1.5px solid #F59E0B !important;
+      color: #FDE68A !important;
+      font-weight: 800 !important;
+      box-shadow: 0 0 16px rgba(245, 158, 11, 0.4) !important;
+      animation: pulse-freemoney 2.2s infinite ease-in-out;
+    }
+    @keyframes pulse-freemoney {
+      0%, 100% { box-shadow: 0 0 10px rgba(245, 158, 11, 0.35); border-color: #F59E0B; }
+      50% { box-shadow: 0 0 24px rgba(245, 158, 11, 0.8); border-color: #FDE68A; transform: scale(1.02); }
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pretendard', sans-serif; -webkit-tap-highlight-color: transparent; }
     html { scroll-behavior: smooth; }
     body { background-color: var(--dark-bg); color: var(--text-main); line-height: 1.65; padding-bottom: 90px; }
@@ -613,7 +635,7 @@
     <div class="nav-inner">
       <a href="#hero" class="nav-brand">
         <i class="fa-solid fa-crown" style="color: var(--gold);"></i>
-        AEG <span>프리머니</span>
+        AEG <span class="text-freemoney">프리머니 프로젝트</span>
         <span class="sub-text">GA 비즈니스</span>
       </a>
 
@@ -665,12 +687,12 @@
         <!-- 슬라이드 1 : 프리머니 프로젝트 & 0원 연금 비전 -->
         <div class="swiper-slide slide-bg-1">
           <div class="slide-content">
-            <div class="slide-badge">
-              <i class="fa-solid fa-sparkles"></i> AEG 사의 대표 혁신 금융 모델
+            <div class="slide-badge badge-freemoney">
+              <i class="fa-solid fa-crown" style="color: #FDE68A;"></i> <span class="text-freemoney" style="font-size: 14.5px;">AEG 프리머니 프로젝트</span> (0원 플랜)
             </div>
             <h1 class="slide-title">
-              내 돈 <em>단 1원도 안 들이고</em><br>
-              매월 따박따박 평생 연금!
+              <span class="text-freemoney" style="font-size: 1.05em;">프리머니 프로젝트</span>로<br>
+              내 돈 <em>단 1원도 안 들이고</em> 평생 연금!
             </h1>
             <p class="slide-desc">
               초기 자본금 0원, 월 유지비 0원(회사 100% 대납 지원)!<br>
@@ -749,13 +771,13 @@
   <main class="container">
 
     <!-- AEG 사 소개 카드 (회사 소개 섹션) -->
-    <div class="corp-intro-box" id="about-aeg">
+    <div class="corp-intro-box" id="about-aeg" style="border: 1.5px solid rgba(245, 158, 11, 0.4); box-shadow: 0 4px 20px rgba(245, 158, 11, 0.1);">
       <div class="corp-intro-header">
-        <i class="fa-solid fa-landmark"></i> AEG 사는 어떤 회사인가요?
+        <i class="fa-solid fa-landmark" style="color: var(--gold);"></i> AEG 사는 어떤 회사인가요?
       </div>
       <p class="corp-intro-desc">
         <strong>AEG(Ace Entertainment Global)</strong>는 제도권 대기업 상조사(대명소노그룹, 웅진프리드라이프) 및 보험사와 제휴하여 합법적인 금융/상조 GA 마케팅 플랫폼을 운영하는 혁신 기업입니다.<br>
-        기존 다단계/네트워크의 사재기·진입비 피해를 완전히 없애고, GA 모집 수수료를 100% 회원과 파트너에게 환원하는 <strong>'프리머니 프로젝트'</strong>를 통해 대한민국 무자본 연금 비즈니스를 선도하고 있습니다.
+        기존 다단계/네트워크의 사재기·진입비 피해를 완전히 없애고, GA 모집 수수료를 100% 회원과 파트너에게 환원하는 <strong class="text-freemoney" style="font-size: 1.1em;">'프리머니 프로젝트(Free Money Project)'</strong>를 통해 대한민국 무자본 연금 비즈니스를 선도하고 있습니다.
       </p>
     </div>
 
@@ -784,13 +806,15 @@
       <h2 class="sec-title">왜 1원도 들지 않고,<br>피해자가 전혀 없을까요?</h2>
       <p class="sec-desc">물건을 사재기하거나 매월 유지비를 내는 다단계가 아닙니다. 제도권 금융/상조 GA의 합법적 모집 수수료를 돌려받는 혁신 모델입니다.</p>
 
-      <div class="info-card" style="padding: 0; overflow: hidden;">
+      <div class="info-card" style="padding: 0; overflow: hidden; border: 1.5px solid rgba(245, 158, 11, 0.3);">
         <table class="compare-table">
           <thead>
             <tr>
               <th>구분</th>
               <th>기존 네트워크 / 부업</th>
-              <th>AEG 프리머니 프로젝트</th>
+              <th style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(245, 158, 11, 0.4)); border-bottom: 2px solid #F59E0B;">
+                <span class="text-freemoney" style="font-size: 15px;">⭐ AEG 프리머니 프로젝트</span>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -949,7 +973,7 @@
     <!-- 6. Official Video Embed -->
     <section class="section-wrap" id="video">
       <div class="sec-tag">Official Video</div>
-      <h2 class="sec-title">영상으로 확인하는<br>AEG 프리머니 비전</h2>
+      <h2 class="sec-title">영상으로 확인하는<br><span class="text-freemoney">AEG 프리머니 프로젝트</span> 비전</h2>
       <p class="sec-desc">백문이 불여일견! 2분 44초짜리 공식 영상을 직접 시청해 보세요.</p>
 
       <div class="video-box">
@@ -1003,12 +1027,12 @@
     <section class="section-wrap" id="manager">
 
 
-      <div class="profile-card">
+      <div class="profile-card" style="border: 2px solid rgba(245, 158, 11, 0.45); box-shadow: 0 8px 30px rgba(245, 158, 11, 0.15);">
         <div class="profile-avatar">
           <i class="fa-solid fa-user-tie"></i>
         </div>
         <div class="profile-name">AEG 공인 공식 파트너</div>
-        <div class="profile-role">프리머니 프로젝트 전문 총괄 상담사</div>
+        <div class="profile-role"><span class="text-freemoney" style="font-size: 14px;">⭐ 프리머니 프로젝트</span> 전문 총괄 상담사</div>
 
         <div class="contact-box">
           <div class="ref-code-wrap">
@@ -1035,7 +1059,7 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <i class="fa-solid fa-crown" style="color: var(--gold);"></i>
-        AEG (Ace Entertainment Global) <span>프리머니 프로젝트</span>
+        AEG (Ace Entertainment Global) <span class="text-freemoney">프리머니 프로젝트</span>
       </div>
       
       <p class="footer-desc">
