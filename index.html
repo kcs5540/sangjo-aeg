@@ -27,14 +27,12 @@
       --text-muted: #64748B;
     }
 
-    /* 프리머니 프로젝트 초강조 스타일 (네온 골드 & 앰버 그라데이션) */
+    /* 프리머니 프로젝트 강조 스타일 (선명하고 뚜렷한 골드 컬러 & 그림자) */
     .text-freemoney {
-      background: linear-gradient(135deg, #FFF3BF 0%, #F59E0B 50%, #FF8C00 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #FDE047 !important; /* 밝고 뚜렷한 브라이트 골드 옐로우 */
       font-weight: 900 !important;
       display: inline-block;
-      filter: drop-shadow(0 2px 8px rgba(245, 158, 11, 0.45));
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.95), 0 0 12px rgba(245, 158, 11, 0.5);
     }
     .badge-freemoney {
       background: linear-gradient(135deg, rgba(245, 158, 11, 0.22), rgba(234, 88, 12, 0.18)) !important;
@@ -198,15 +196,15 @@
     
     /* 3가지 테마별 프리미엄 배경 이미지 (텍스트 가독성과 차분한 톤을 위해 알맞게 조정한 오버레이) */
     .slide-bg-1 {
-      background-image: linear-gradient(180deg, rgba(11, 17, 32, 0.55) 0%, rgba(11, 17, 32, 0.78) 100%),
+      background-image: linear-gradient(180deg, rgba(7, 11, 22, 0.72) 0%, rgba(7, 11, 22, 0.88) 100%),
                         url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600&auto=format&fit=crop');
     }
     .slide-bg-2 {
-      background-image: linear-gradient(180deg, rgba(11, 17, 32, 0.52) 0%, rgba(11, 17, 32, 0.75) 100%),
+      background-image: linear-gradient(180deg, rgba(7, 11, 22, 0.70) 0%, rgba(7, 11, 22, 0.86) 100%),
                         url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1600&auto=format&fit=crop');
     }
     .slide-bg-3 {
-      background-image: linear-gradient(180deg, rgba(11, 17, 32, 0.55) 0%, rgba(11, 17, 32, 0.78) 100%),
+      background-image: linear-gradient(180deg, rgba(7, 11, 22, 0.72) 0%, rgba(7, 11, 22, 0.88) 100%),
                         url('https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?q=80&w=1600&auto=format&fit=crop');
     }
 
@@ -234,8 +232,9 @@
       text-shadow: 0 3px 12px rgba(0, 0, 0, 0.85), 0 1px 3px rgba(0, 0, 0, 0.9); /* 배경이 밝아져도 글자가 뚜렷하게 보이도록 그림자 강화 */
     }
     .slide-title em {
-      font-style: normal; color: var(--gold);
-      text-decoration: underline; text-underline-offset: 6px; text-decoration-color: rgba(245, 158, 11, 0.6);
+      font-style: normal; color: #FDE047;
+      text-decoration: underline; text-underline-offset: 6px; text-decoration-color: rgba(245, 158, 11, 0.7);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
     }
     .slide-desc {
       font-size: 16px; color: #FFFFFF; line-height: 1.65;
