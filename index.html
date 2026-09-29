@@ -48,28 +48,20 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pretendard', sans-serif; -webkit-tap-highlight-color: transparent; }
-    html { scroll-behavior: smooth; overflow-x: hidden; }
-    body { background-color: var(--dark-bg); color: var(--text-main); line-height: 1.65; padding-bottom: 90px; overflow-x: hidden; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--dark-bg); color: var(--text-main); line-height: 1.65; padding-top: 58px; padding-bottom: 90px; }
 
-    /* Top Global Corporate Bar (상단 회사 소개 바) */
-    .corp-top-bar {
-      background: #070D19;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      padding: 6px 20px;
-      font-size: 11.5px;
-      color: var(--text-muted);
-    }
-    .corp-top-inner {
-      max-width: 900px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .corp-top-inner span { display: flex; align-items: center; gap: 6px; }
-
-    /* Top Sticky Navigation */
+    /* Top Sticky/Fixed Navigation */
     .navbar {
-      position: sticky; top: 0; z-index: 1000;
-      background: rgba(11, 17, 32, 0.96);
-      backdrop-filter: blur(12px);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(11, 17, 32, 0.98);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       padding: 10px 24px;
     }
@@ -159,10 +151,15 @@
       display: none; flex-direction: column; gap: 12px;
       background: #111827; border-bottom: 1px solid var(--card-border);
       padding: 16px 20px;
-      position: sticky;
-      top: 57px;
-      z-index: 1000;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      position: fixed;
+      top: 55px;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 999;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+      max-height: calc(100vh - 55px);
+      overflow-y: auto;
     }
     .mobile-drawer.open { display: flex; }
     .mobile-drawer a {
@@ -684,15 +681,7 @@
 </head>
 <body>
 
-  <!-- Top Global Corporate Bar -->
-  <aside class="corp-top-bar">
-    <div class="corp-top-inner">
-      <span><i class="fa-solid fa-building-shield"></i> AEG(Ace Entertainment Global) 공인 비즈니스 포털</span>
-      <span><i class="fa-solid fa-headset"></i> 24시간 상담 센터 : 010-3306-5540</span>
-    </div>
-  </aside>
-
-  <!-- Top Sticky Navigation (메뉴 내비게이션 바) -->
+  <!-- Top Fixed Navigation (상단 타이틀 & 메뉴 내비게이션 바 - 화면 상단 완벽 고정) -->
   <header class="navbar">
     <div class="nav-inner">
       <a href="#hero" class="nav-brand">
