@@ -495,18 +495,20 @@
       min-width: 142px;
       padding: 9px 14px;
       border-radius: 999px; /* 완전한 캡슐 알약 형태 */
-      font-size: 12.5px;
-      font-weight: 700;
+      font-size: 13px;
+      font-weight: 800;
       white-space: nowrap; /* 글자 줄바꿈 방지: 반드시 한 줄로 표시 */
       text-decoration: none;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.4);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
     }
     .pill-action-btn span {
       white-space: nowrap;
+      font-weight: 800;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
     }
     .pill-action-btn:hover {
       transform: translateY(-2px) scale(1.03);
@@ -517,27 +519,30 @@
       transform: scale(0.96);
     }
 
-    /* 1. 전화예약/상담 골드 캡슐 (투명도 상향 0.58~0.65) */
+    /* 1. 전화예약/상담 골드 캡슐 (선명하고 짙은 프리미엄 앰버 골드) */
     .pill-gold {
-      background: linear-gradient(135deg, rgba(245, 158, 11, 0.62) 0%, rgba(217, 119, 6, 0.65) 100%);
-      color: #FFFFFF;
-      border-color: rgba(253, 230, 138, 0.45);
+      background: linear-gradient(135deg, #D97706 0%, #B45309 100%);
+      color: #FFFFFF !important;
+      border-color: rgba(254, 240, 138, 0.6);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
     }
     .pill-gold i { font-size: 13.5px; }
 
-    /* 2. 파트너 가입형 블루 캡슐 (투명도 상향 0.58~0.65) */
+    /* 2. 파트너 가입형 블루 캡슐 (선명한 로열 블루) */
     .pill-blue {
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.62) 0%, rgba(29, 78, 216, 0.65) 100%);
-      color: #FFFFFF;
-      border-color: rgba(147, 197, 253, 0.45);
+      background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+      color: #FFFFFF !important;
+      border-color: rgba(191, 219, 254, 0.6);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
     }
     .pill-blue i { font-size: 13.5px; }
 
-    /* 3. 톡톡/문자형 그린 캡슐 (투명도 상향 0.58~0.65) */
+    /* 3. 톡톡/문자형 그린 캡슐 (선명한 에메랄드 그린) */
     .pill-green {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.62) 0%, rgba(5, 150, 105, 0.65) 100%);
-      color: #FFFFFF;
-      border-color: rgba(110, 231, 183, 0.45);
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      color: #FFFFFF !important;
+      border-color: rgba(167, 243, 208, 0.6);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
     }
     .pill-green i { font-size: 14px; }
 
