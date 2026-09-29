@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AEG 프리머니 0원 파트너 가입절차 가이드 | 4단계 초간단 안내</title>
+  
+  <!-- Pretendard Font & FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #2563EB;
+      --primary-dark: #1D4ED8;
+      --primary-light: #60A5FA;
+      --gold: #F59E0B;
+      --gold-light: #FDE68A;
+      --accent: #10B981;
+      --dark-bg: #0B1120;
+      --card-bg: #1E293B;
+      --card-border: #334155;
+      --text-main: #F8FAFC;
+      --text-sub: #94A3B8;
+      --text-muted: #64748B;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pretendard', sans-serif; -webkit-tap-highlight-color: transparent; }
+    body { background-color: var(--dark-bg); color: var(--text-main); line-height: 1.65; padding-bottom: 90px; }
+
+    /* Top Navigation */
+    .navbar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(11, 17, 32, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 14px 20px;
+    }
+    .nav-inner {
+      max-width: 680px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-back {
+      color: #93C5FD; text-decoration: none; font-size: 14px; font-weight: 700;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .nav-back:hover { color: #FFF; }
+    .nav-title { font-size: 16px; font-weight: 900; color: #FFF; }
+
+    /* Container */
+    .container { max-width: 680px; margin: 0 auto; padding: 24px 20px; }
+
+    /* Header Banner */
+    .header-box {
+      text-align: center;
+      padding: 24px 16px 28px;
+      background: linear-gradient(145deg, #172554, #1E293B);
+      border: 1px solid rgba(59, 130, 246, 0.35);
+      border-radius: 18px;
+      margin-bottom: 28px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    .badge-wrap {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: var(--gold-light);
+      font-size: 12px; font-weight: 800;
+      padding: 4px 12px; border-radius: 999px; margin-bottom: 12px;
+    }
+    .header-box h1 {
+      font-size: 24px; font-weight: 900; letter-spacing: -0.5px;
+      margin-bottom: 8px; color: #FFF; line-height: 1.4;
+    }
+    .header-box h1 span { color: var(--gold); }
+    .header-box p {
+      font-size: 14px; color: #CBD5E1; word-break: keep-all; line-height: 1.6;
+    }
+
+    /* Core Flow 4 Steps */
+    .step-flow-wrap {
+      display: flex; flex-direction: column; gap: 20px;
+      position: relative;
+    }
+
+    /* Step Card */
+    .step-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 22px 20px;
+      position: relative;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+    .step-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .step-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--primary); color: #FFF;
+      font-size: 12.5px; font-weight: 800;
+      padding: 4px 12px; border-radius: 8px;
+    }
+    .step-time {
+      font-size: 12px; color: var(--gold); font-weight: 700;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .step-title {
+      font-size: 18px; font-weight: 800; color: #FFFFFF;
+      margin-bottom: 8px; display: flex; align-items: center; gap: 8px;
+    }
+    .step-desc {
+      font-size: 14px; color: #CBD5E1; line-height: 1.65;
+      word-break: keep-all; margin-bottom: 14px;
+    }
+
+    /* Step Detail Checklist / Box */
+    .detail-box {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 13.5px;
+      color: #E2E8F0;
+      margin-bottom: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .detail-item {
+      display: flex; gap: 8px; margin-bottom: 8px; align-items: flex-start;
+    }
+    .detail-item:last-child { margin-bottom: 0; }
+    .detail-item i { color: var(--gold); font-size: 14px; margin-top: 3px; flex-shrink: 0; }
+    .detail-item strong { color: #FFF; }
+
+    /* Action Link Button */
+    .step-action-btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: linear-gradient(135deg, #2563EB, #1D4ED8);
+      color: #FFF; font-size: 14.5px; font-weight: 800;
+      padding: 13px 20px; border-radius: 12px;
+      text-decoration: none; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+      transition: transform 0.15s ease;
+    }
+    .step-action-btn:active { transform: scale(0.98); }
+
+    /* Down Arrow Indicator between steps */
+    .flow-arrow {
+      text-align: center;
+      color: var(--primary-light);
+      font-size: 18px;
+      margin: -10px 0;
+      opacity: 0.6;
+    }
+
+    /* Warning & Tip Box */
+    .tip-box {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(217, 119, 6, 0.15));
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 28px;
+    }
+    .tip-title {
+      font-size: 15px; font-weight: 800; color: var(--gold-light);
+      display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+    }
+    .tip-desc {
+      font-size: 13.5px; color: #E2E8F0; line-height: 1.65; word-break: keep-all;
+    }
+
+    /* Bottom Contact Box */
+    .help-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 22px;
+      margin-top: 20px;
+      text-align: center;
+    }
+    .help-phone {
+      font-size: 20px; font-weight: 900; color: var(--gold);
+      margin: 8px 0 14px;
+    }
+
+    /* Floating Pill Quick Buttons (플로팅 캡슐 알약 버튼 표현 기법) */
+    .floating-quick-wrap {
+      position: fixed;
+      bottom: 24px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 1000;
+      align-items: flex-end;
+    }
+    .pill-action-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 140px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    .pill-action-btn:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+      filter: brightness(1.15);
+    }
+    .pill-action-btn:active { transform: scale(0.96); }
+
+    .pill-gold {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.62) 0%, rgba(217, 119, 6, 0.65) 100%);
+      color: #FFFFFF;
+      border-color: rgba(253, 230, 138, 0.45);
+    }
+    .pill-gold i { font-size: 13.5px; }
+
+    .pill-blue {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.62) 0%, rgba(29, 78, 216, 0.65) 100%);
+      color: #FFFFFF;
+      border-color: rgba(147, 197, 253, 0.45);
+    }
+    .pill-blue i { font-size: 13.5px; }
+
+    @media (max-width: 768px) {
+      .floating-quick-wrap { right: 14px; bottom: 18px; gap: 6px; }
+      .pill-action-btn { width: 132px; padding: 8px 10px; font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <a href="07_AEG_개인_홍보용_랜딩페이지.html" class="nav-back">
+        <i class="fa-solid fa-arrow-left"></i> 홍보 홈페이지로
+      </a>
+      <div class="nav-title">가입절차 안내</div>
+      <div style="width: 20px;"></div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Header Box -->
+    <div class="header-box">
+      <div class="badge-wrap">
+        <i class="fa-solid fa-shield-check"></i> 자본금 0원 무위험 패키지
+      </div>
+      <h1>
+        AEG 프리머니 <span>4단계 초간단</span> 가입절차
+      </h1>
+      <p>
+        회원가입부터 쇼핑몰 접수, 해피콜 확인까지!<br>
+        순서대로 따라 하시면 5분 안에 0원 세팅이 완료됩니다.
+      </p>
+    </div>
+
+    <!-- 4단계 진행 흐름 -->
+    <div class="step-flow-wrap">
+
+      <!-- STEP 1 : 회원가입 -->
+      <div class="step-card">
+        <div class="step-header">
+          <span class="step-badge">STEP 01</span>
+          <span class="step-time"><i class="fa-regular fa-clock"></i> 소요시간: 1분</span>
+        </div>
+        <h2 class="step-title">
+          <i class="fa-solid fa-user-plus" style="color: #60A5FA;"></i> 엔조이26 무료 회원가입
+        </h2>
+        <p class="step-desc">
+          공식 가입 링크를 클릭하여 추천인 코드(<strong>2JL3HD</strong>)가 자동 적용된 상태에서 간단한 회원정보를 입력하고 가입을 마칩니다.
+        </p>
+
+        <div class="detail-box">
+          <div class="detail-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <div><strong>추천인 코드 확인 :</strong> <code>2JL3HD</code> (자동 입력됨)</div>
+          </div>
+          <div class="detail-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <div><strong>입력 항목 :</strong> 아이디, 비밀번호, 성명, 휴대전화번호</div>
+          </div>
+        </div>
+
+        <a href="https://www.enjoy26.com/signup?referralCode=2JL3HD" target="_blank" class="step-action-btn">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> STEP 1. 무료 회원가입 바로가기
+        </a>
+      </div>
+
+      <div class="flow-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+
+      <!-- STEP 2 : 로그인 -->
+      <div class="step-card">
+        <div class="step-header">
+          <span class="step-badge">STEP 02</span>
+          <span class="step-time"><i class="fa-regular fa-clock"></i> 소요시간: 30초</span>
+        </div>
+        <h2 class="step-title">
+          <i class="fa-solid fa-right-to-bracket" style="color: #FBBF24;"></i> 플랫폼 로그인 및 마이페이지 확인
+        </h2>
+        <p class="step-desc">
+          가입하신 아이디와 비밀번호로 로그인하여 정상 접속 여부 및 내 파트너 코드를 확인합니다.
+        </p>
+
+        <div class="detail-box">
+          <div class="detail-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <div><strong>로그인 주소 :</strong> <code>www.enjoy26.com/login</code></div>
+          </div>
+          <div class="detail-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <div><strong>확인 사항 :</strong> 마이페이지 내 내 계정 정보 활성화 확인</div>
+          </div>
+        </div>
+
+        <a href="https://www.enjoy26.com/login" target="_blank" class="step-action-btn" style="background: linear-gradient(135deg, #475569, #334155);">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> STEP 2. 엔조이26 로그인하기
+        </a>
+      </div>
+
+      <div class="flow-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+
+      <!-- STEP 3 : 쇼핑몰에서 대명/웅진 보험 접수 -->
+      <div class="step-card" style="border-color: rgba(245, 158, 11, 0.4);">
+        <div class="step-header">
+          <span class="step-badge" style="background: var(--gold); color: #000;">STEP 03 (핵심)</span>
+          <span class="step-time"><i class="fa-regular fa-clock"></i> 소요시간: 2분</span>
+        </div>
+        <h2 class="step-title">
+          <i class="fa-solid fa-cart-shopping" style="color: var(--gold);"></i> 쇼핑몰 메뉴에서 2개 상품 '보험 접수'
+        </h2>
+        <p class="step-desc">
+          좌측 메뉴에서 <strong>[쇼핑몰]</strong>을 클릭한 후, 상단 탭 <strong>[접수]</strong>(또는 [All])에서 <strong>'소노스테이션(대명상조)'</strong>과 <strong>'웅진프리드'</strong> 2가지 상품을 각각 클릭하여 신청합니다.
+        </p>
+
+        <!-- 실제 쇼핑몰 화면 구성과 100% 동일한 상품 안내 카드 -->
+        <div class="detail-box" style="background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.25);">
+          
+          <!-- 상품 1: 소노스테이션 -->
+          <div class="detail-item">
+            <i class="fa-solid fa-hotel" style="color: #FBBF24;"></i>
+            <div style="flex: 1;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <strong style="font-size: 15px; color: #FFF;">① 소노스테이션(대명상조)</strong>
+                <span style="background: rgba(59, 130, 246, 0.2); color: #93C5FD; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 700;">보험 접수 전용</span>
+              </div>
+              <div style="color: #CBD5E1; font-size: 13px;">
+                • 상품명: <strong>올레디라이프 450 (250회) 3구좌</strong><br>
+                • 월 납입금: 18,000원 × 3구좌 = <strong>54,000원</strong> (CMS 이체일: 매월 15일)<br>
+                • 17개월간 회사 전액 100% 대납 지원 (본인 부담금 0원)
+              </div>
+            </div>
+          </div>
+
+          <div style="border-top: 1px dashed rgba(255,255,255,0.15); margin: 12px 0;"></div>
+
+          <!-- 상품 2: 웅진프리드 -->
+          <div class="detail-item">
+            <i class="fa-solid fa-umbrella" style="color: #60A5FA;"></i>
+            <div style="flex: 1;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <strong style="font-size: 15px; color: #FFF;">② 웅진프리드</strong>
+                <span style="background: rgba(59, 130, 246, 0.2); color: #93C5FD; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 700;">보험 접수 전용</span>
+              </div>
+              <div style="color: #CBD5E1; font-size: 13px;">
+                • 상품명: <strong>웅진 프리드 라이프540 (240회) 2구좌</strong><br>
+                • 월 납입금: 22,500원 × 2구좌 = <strong>45,000원</strong> (CMS 이체일: 매월 20일)<br>
+                • 14개월간 회사 전액 100% 대납 지원 (본인 부담금 0원)
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="background: rgba(0, 0, 0, 0.3); border-radius: 10px; padding: 12px 14px; font-size: 12.5px; color: var(--gold-light); margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.05);">
+          📌 <strong>[진행 순서 팁]</strong><br>
+          1. <strong>[소노스테이션]</strong> 클릭 → 가입자 정보 입력 및 자동이체 계좌 등록 후 접수 완료<br>
+          2. 다시 쇼핑몰로 나와 <strong>[웅진프리드]</strong> 클릭 → 동일하게 정보 입력 후 접수 완료<br>
+          ※ 두 상품의 접수가 모두 완료되어야 <strong>총 5구좌(월 99,000원 전액 회사 지원)</strong> 패키지가 완성됩니다.
+        </div>
+
+        <a href="https://www.enjoy26.com" target="_blank" class="step-action-btn" style="background: linear-gradient(135deg, #D97706, #B45309);">
+          <i class="fa-solid fa-cart-shopping"></i> STEP 3. 엔조이26 쇼핑몰 바로가기
+        </a>
+      </div>
+
+
+      <div class="flow-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+
+      <!-- STEP 4 : 해피콜 받기 -->
+      <div class="step-card" style="border-color: rgba(16, 185, 129, 0.4);">
+        <div class="step-header">
+          <span class="step-badge" style="background: #10B981; color: #FFF;">STEP 04 (최종)</span>
+          <span class="step-time" style="color: #34D399;"><i class="fa-regular fa-clock"></i> 1~2일 내 진행</span>
+        </div>
+        <h2 class="step-title">
+          <i class="fa-solid fa-phone-volume" style="color: #34D399;"></i> 공식 본사 확인 전화(해피콜) 수신
+        </h2>
+        <p class="step-desc">
+          접수가 완료되면 1~2영업일 이내에 대명 및 웅진 본사 상담원으로부터 본인 확인 안내 전화(해피콜)가 걸려옵니다. 통화로 가입 동의만 하시면 최종 승인 완료!
+        </p>
+
+        <div class="detail-box" style="background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.2);">
+          <div class="detail-item">
+            <i class="fa-solid fa-circle-check" style="color: #34D399;"></i>
+            <div><strong>대명소노 본사 전화 :</strong> 본인 확인 및 약관 동의 → "네, 본인 맞습니다. 가입 동의합니다."</div>
+          </div>
+          <div class="detail-item">
+            <i class="fa-solid fa-circle-check" style="color: #34D399;"></i>
+            <div><strong>웅진프리드 본사 전화 :</strong> 본인 확인 및 자동이체 동의 → "네, 동의합니다."</div>
+          </div>
+          <div class="detail-item">
+            <i class="fa-solid fa-gift" style="color: var(--gold);"></i>
+            <div><strong>승인 완료 즉시 :</strong> 5구좌 개설 확정 + 파트너 자격 획득 + 추천수당/연금 파이프라인 가동!</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tip & Notice Box -->
+    <div class="tip-box">
+      <div class="tip-title">
+        <i class="fa-solid fa-circle-info"></i> 반드시 기억해야 할 꿀팁!
+      </div>
+      <p class="tip-desc">
+        • 해피콜 전화를 받지 않으시면 가입이 지연되거나 취소될 수 있으니 모르는 번호(대표번호)로 오는 전화도 꼭 받아주세요.<br>
+        • 향후 진행될 <strong>보험모집 플랜(팀장 3%, 지점장 10%, 본부장 30%)</strong> 역시 위 상조 조건을 기본 충족하시면 우선 혜택이 적용됩니다.
+      </p>
+    </div>
+
+    <!-- Contact & Assistance -->
+    <div class="help-card">
+      <div style="font-size: 14px; color: var(--text-sub);">가입 중 막히는 부분이 있으신가요?</div>
+      <div class="help-phone">대표 파트너 직통 : 010-3306-5540</div>
+      <p style="font-size: 13px; color: #94A3B8; margin-bottom: 16px;">
+        전화 주시면 원격 및 유선으로 1:1 친절하게 가입을 도와드립니다.
+      </p>
+      <a href="tel:010-3306-5540" class="step-action-btn" style="background: #10B981;">
+        <i class="fa-solid fa-phone"></i> 즉시 전화로 문의하기
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Floating Quick Buttons -->
+  <aside class="floating-quick-wrap">
+    <a href="tel:010-3306-5540" class="pill-action-btn pill-gold">
+      <i class="fa-solid fa-phone-volume"></i>
+      <span>전화예약·상담</span>
+    </a>
+    <a href="https://www.enjoy26.com/signup?referralCode=2JL3HD" target="_blank" class="pill-action-btn pill-blue">
+      <i class="fa-solid fa-user-plus"></i>
+      <span>0원 파트너 가입</span>
+    </a>
+  </aside>
+
+</body>
+</html>

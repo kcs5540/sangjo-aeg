@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AEG 프리머니 프로젝트 | 내 돈 0원으로 만드는 평생 연금형 파이프라인</title>
+  
+  <!-- Pretendard Font & FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Swiper.js Slider CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <style>
+    :root {
+      --primary: #2563EB;
+      --primary-dark: #1D4ED8;
+      --primary-light: #60A5FA;
+      --gold: #F59E0B;
+      --gold-light: #FDE68A;
+      --accent: #10B981;
+      --dark-bg: #0B1120;
+      --card-bg: #1E293B;
+      --card-border: #334155;
+      --text-main: #F8FAFC;
+      --text-sub: #94A3B8;
+      --text-muted: #64748B;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pretendard', sans-serif; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--dark-bg); color: var(--text-main); line-height: 1.65; padding-bottom: 90px; }
+
+    /* Top Global Corporate Bar (상단 회사 소개 바) */
+    .corp-top-bar {
+      background: #070D19;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 6px 20px;
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+    .corp-top-inner {
+      max-width: 900px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .corp-top-inner span { display: flex; align-items: center; gap: 6px; }
+
+    /* Top Sticky Navigation */
+    .navbar {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(11, 17, 32, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 10px 24px;
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start; /* 너무 오른쪽으로 쏠리지 않도록 좌-중앙 정돈 */
+      gap: 32px;
+    }
+    .nav-brand {
+      font-size: 18px; font-weight: 900; letter-spacing: -0.5px; color: #FFF;
+      display: flex; align-items: center; gap: 6px; text-decoration: none;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .nav-brand span { color: var(--gold); }
+    .nav-brand .sub-text { font-size: 11px; color: var(--text-sub); font-weight: 500; margin-left: 2px; padding-left: 6px; border-left: 1px solid var(--card-border); }
+
+    /* Desktop Navigation Menu (중앙에 자연스럽게 위치) */
+    .nav-menu {
+      display: flex;
+      gap: 16px;
+      list-style: none;
+      align-items: center;
+      white-space: nowrap;
+      flex-wrap: nowrap;
+      margin-right: auto; /* 로고 다음 메뉴를 중앙 쪽에 가깝게 채우고, 가입 버튼만 우측으로 */
+    }
+    .nav-menu li { display: flex; align-items: center; }
+    .nav-menu a {
+      color: #CBD5E1; text-decoration: none; font-size: 13.5px; font-weight: 700;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      padding: 6px 4px;
+      position: relative;
+    }
+    .nav-menu a:hover { color: var(--gold); }
+    /* 클릭되어 활성화된 메뉴 하이라이트 (선명한 골드 컬러 + 하단 골드 라인) */
+    .nav-menu a.active {
+      color: var(--gold) !important;
+      font-weight: 900;
+    }
+    .nav-menu a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2.5px;
+      background: var(--gold);
+      border-radius: 2px;
+      box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+    }
+
+    
+    /* 우측 끝 무료가입 버튼 */
+    .nav-right-btn-wrap {
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+    .nav-menu-btn {
+      background: rgba(37, 99, 235, 0.25);
+      border: 1px solid rgba(59, 130, 246, 0.5);
+      color: #93C5FD !important;
+      padding: 7px 14px; border-radius: 8px; font-size: 12.5px !important;
+      font-weight: 800;
+      white-space: nowrap;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-menu-btn:hover {
+      background: var(--primary);
+      color: #FFF !important;
+    }
+
+
+    /* Mobile Hamburger Menu */
+    .mobile-menu-btn {
+      display: none; background: transparent; border: none; color: #FFF; font-size: 20px; cursor: pointer;
+    }
+
+
+    /* Mobile Drawer Menu */
+    .mobile-drawer {
+      display: none; flex-direction: column; gap: 12px;
+      background: #111827; border-bottom: 1px solid var(--card-border);
+      padding: 16px 20px;
+    }
+    .mobile-drawer.open { display: flex; }
+    .mobile-drawer a {
+      color: #E2E8F0; text-decoration: none; font-size: 14px; font-weight: 700;
+      padding: 8px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex; align-items: center; gap: 10px;
+    }
+
+    /* =========================================================
+       HERO SWIPER SLIDER (배경 이미지 & 3장면 슬라이더)
+       ========================================================= */
+    .hero-swiper-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: #0B1120;
+    }
+    .swiper-slide {
+      position: relative;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      padding: 60px 20px 70px;
+      text-align: center;
+    }
+    
+    /* 3가지 테마별 프리미엄 배경 이미지 (텍스트 가독성과 차분한 톤을 위해 알맞게 조정한 오버레이) */
+    .slide-bg-1 {
+      background-image: linear-gradient(180deg, rgba(11, 17, 32, 0.55) 0%, rgba(11, 17, 32, 0.78) 100%),
+                        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600&auto=format&fit=crop');
+    }
+    .slide-bg-2 {
+      background-image: linear-gradient(180deg, rgba(11, 17, 32, 0.52) 0%, rgba(11, 17, 32, 0.75) 100%),
+                        url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1600&auto=format&fit=crop');
+    }
+    .slide-bg-3 {
+      background-image: linear-gradient(180deg, rgba(11, 17, 32, 0.55) 0%, rgba(11, 17, 32, 0.78) 100%),
+                        url('https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?q=80&w=1600&auto=format&fit=crop');
+    }
+
+    .slide-content {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .slide-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(11, 17, 32, 0.65);
+      border: 1px solid rgba(245, 158, 11, 0.6);
+      color: var(--gold-light);
+      font-size: 13px; font-weight: 800;
+      padding: 6px 18px; border-radius: 999px;
+      margin-bottom: 18px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    .slide-title {
+      font-size: 32px; line-height: 1.35; font-weight: 900;
+      letter-spacing: -1px; margin-bottom: 16px; word-break: keep-all; color: #FFFFFF;
+      text-shadow: 0 3px 12px rgba(0, 0, 0, 0.85), 0 1px 3px rgba(0, 0, 0, 0.9); /* 배경이 밝아져도 글자가 뚜렷하게 보이도록 그림자 강화 */
+    }
+    .slide-title em {
+      font-style: normal; color: var(--gold);
+      text-decoration: underline; text-underline-offset: 6px; text-decoration-color: rgba(245, 158, 11, 0.6);
+    }
+    .slide-desc {
+      font-size: 16px; color: #FFFFFF; line-height: 1.65;
+      word-break: keep-all; margin-bottom: 26px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+      font-weight: 600;
+    }
+
+    .slide-btn-group {
+      display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+    }
+
+    /* Swiper 커스텀 내비게이션 & 페이징 */
+    .swiper-button-next, .swiper-button-prev {
+      color: rgba(255, 255, 255, 0.7);
+      background: rgba(0, 0, 0, 0.35);
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(6px);
+      transition: all 0.2s ease;
+    }
+    .swiper-button-next:hover, .swiper-button-prev:hover {
+      background: rgba(37, 99, 235, 0.6);
+      color: #FFF;
+    }
+    .swiper-button-next:after, .swiper-button-prev:after { font-size: 16px; font-weight: 900; }
+    .swiper-pagination-bullet {
+      background: #FFFFFF; opacity: 0.4; width: 10px; height: 10px; transition: all 0.3s ease;
+    }
+    .swiper-pagination-bullet-active {
+      background: var(--gold); opacity: 1; width: 26px; border-radius: 6px;
+    }
+
+    /* Main Container */
+    .container { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+    /* 회사 소개 간략 정보 카드 (소개 박스) */
+    .corp-intro-box {
+      background: linear-gradient(145deg, #172554, #1E293B);
+      border: 1px solid rgba(59, 130, 246, 0.35);
+      border-radius: 18px;
+      padding: 24px;
+      margin: 36px 0 28px;
+      text-align: left;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      scroll-margin-top: 80px;
+    }
+    .corp-intro-header {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+      font-size: 17px; font-weight: 800; color: #93C5FD;
+    }
+    .corp-intro-desc {
+      font-size: 14.5px; color: #E2E8F0; line-height: 1.7; word-break: keep-all;
+    }
+
+    /* Key Points Highlight Box */
+    .highlight-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+      margin-bottom: 30px;
+    }
+    .hl-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 16px 8px;
+      text-align: center;
+    }
+    .hl-card i { font-size: 22px; margin-bottom: 8px; }
+    .hl-card.c1 i { color: #38BDF8; }
+    .hl-card.c2 i { color: #34D399; }
+    .hl-card.c3 i { color: #FBBF24; }
+    .hl-title { font-size: 12px; color: var(--text-sub); }
+    .hl-val { font-size: 17px; font-weight: 800; color: #FFF; margin-top: 2px; }
+
+    /* CTA Button Group */
+    .cta-hero-group { display: flex; flex-direction: column; gap: 12px; }
+    .btn-main {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+      color: #FFF; font-size: 16px; font-weight: 800;
+      padding: 16px 24px; border-radius: 14px;
+      text-decoration: none; box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: transform 0.15s ease;
+    }
+    .btn-main:active { transform: scale(0.98); }
+    .btn-main i { font-size: 19px; }
+
+    .btn-sub {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #FFFFFF; font-size: 15px; font-weight: 700;
+      padding: 14px 20px; border-radius: 12px;
+      text-decoration: none; backdrop-filter: blur(4px);
+    }
+
+    /* Section Common */
+    .section-wrap { padding: 48px 0; border-top: 1px solid rgba(255, 255, 255, 0.06); scroll-margin-top: 70px; }
+    .sec-tag { font-size: 12px; font-weight: 800; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .sec-title { font-size: 24px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 12px; word-break: keep-all; color: #FFFFFF; }
+    .sec-desc { font-size: 14.5px; color: var(--text-sub); margin-bottom: 24px; word-break: keep-all; }
+
+    /* Card Box */
+    .info-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 22px;
+      margin-bottom: 16px;
+    }
+
+
+
+    /* Comparison Box */
+    .compare-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    .compare-table th { background: rgba(0, 0, 0, 0.2); padding: 12px 10px; color: var(--text-sub); font-weight: 700; text-align: left; }
+    .compare-table td { padding: 14px 10px; border-top: 1px solid var(--card-border); }
+    .compare-table tr td:last-child { color: var(--gold); font-weight: 800; }
+
+    /* 5-Unit Benefit Card */
+    .benefit-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      margin-bottom: 16px; padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .benefit-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .benefit-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .b-blue { background: rgba(59, 130, 246, 0.15); color: #60A5FA; }
+    .b-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; }
+    .b-green { background: rgba(16, 185, 129, 0.15); color: #34D399; }
+    .benefit-content h4 { font-size: 16px; font-weight: 800; color: #FFF; margin-bottom: 4px; }
+    .benefit-content p { font-size: 13.5px; color: var(--text-sub); }
+
+    /* Video Embed Container */
+    .video-box {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      background: #000;
+      position: relative;
+      margin-bottom: 14px;
+    }
+    .video-box video { width: 100%; display: block; max-height: 420px; object-fit: contain; }
+
+    /* Compensation Steps */
+    .bonus-step {
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .bonus-left { display: flex; align-items: center; gap: 12px; }
+    .bonus-num {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: var(--primary); color: #FFF; font-weight: 800;
+      display: flex; align-items: center; justify-content: center; font-size: 14px;
+    }
+    .bonus-title { font-size: 15px; font-weight: 800; }
+    .bonus-sub { font-size: 12px; color: var(--text-sub); }
+    .bonus-amt { font-size: 16px; font-weight: 900; color: var(--gold); }
+
+    /* Special Future Plan Box */
+    .future-box {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+      border: 1px dashed rgba(245, 158, 11, 0.5);
+      border-radius: 16px;
+      padding: 22px;
+      position: relative;
+    }
+    .future-badge {
+      display: inline-block;
+      background: var(--gold); color: #000;
+      font-size: 11px; font-weight: 900;
+      padding: 3px 8px; border-radius: 6px; margin-bottom: 10px;
+    }
+
+    /* FAQ Accordion */
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .faq-q {
+      padding: 16px 18px;
+      font-size: 15px; font-weight: 800;
+      display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer;
+    }
+    .faq-a {
+      padding: 0 18px 16px;
+      font-size: 13.5px; color: var(--text-sub);
+      line-height: 1.6;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      padding-top: 12px;
+    }
+
+    /* Manager Profile Section */
+    .profile-card {
+      background: linear-gradient(145deg, #1E293B, #0F172A);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      border-radius: 18px;
+      padding: 28px 20px;
+      text-align: center;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    }
+    .profile-avatar {
+      width: 74px; height: 74px; border-radius: 50%;
+      background: linear-gradient(135deg, #F59E0B, #D97706);
+      color: #000; font-size: 32px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      border: 3px solid rgba(255, 255, 255, 0.1);
+    }
+    .profile-name { font-size: 20px; font-weight: 900; color: #FFF; margin-bottom: 4px; }
+    .profile-role { font-size: 13px; color: var(--gold); font-weight: 700; margin-bottom: 16px; }
+    .contact-box {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 20px;
+    }
+    .ref-code-wrap {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      font-size: 15px; margin-bottom: 6px;
+    }
+    .ref-code { font-weight: 900; color: var(--gold); font-family: monospace; font-size: 19px; }
+    .btn-copy {
+      background: #334155; color: #FFF; border: none;
+      padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer;
+    }
+
+    /* Floating Pill Quick Buttons (플로팅 캡슐 알약 버튼 표현 기법) */
+    .floating-quick-wrap {
+      position: fixed;
+      bottom: 24px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 1000;
+      align-items: flex-end;
+    }
+    .pill-action-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 140px; /* 세 버튼 좌우 크기(너비) 100% 동일하게 통일 */
+      padding: 9px 12px;
+      border-radius: 999px; /* 완전한 캡슐 알약 형태 */
+      font-size: 12.5px; /* 글자 크기 좀 더 작고 단정하게 축소 */
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(16px); /* 투명도가 높아 뒷배경이 은은하게 비침 */
+      -webkit-backdrop-filter: blur(16px);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    .pill-action-btn:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+      filter: brightness(1.15);
+    }
+    .pill-action-btn:active {
+      transform: scale(0.96);
+    }
+
+    /* 1. 전화예약/상담 골드 캡슐 (투명도 상향 0.58~0.65) */
+    .pill-gold {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.62) 0%, rgba(217, 119, 6, 0.65) 100%);
+      color: #FFFFFF;
+      border-color: rgba(253, 230, 138, 0.45);
+    }
+    .pill-gold i { font-size: 13.5px; }
+
+    /* 2. 파트너 가입형 블루 캡슐 (투명도 상향 0.58~0.65) */
+    .pill-blue {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.62) 0%, rgba(29, 78, 216, 0.65) 100%);
+      color: #FFFFFF;
+      border-color: rgba(147, 197, 253, 0.45);
+    }
+    .pill-blue i { font-size: 13.5px; }
+
+    /* 3. 톡톡/문자형 그린 캡슐 (투명도 상향 0.58~0.65) */
+    .pill-green {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.62) 0%, rgba(5, 150, 105, 0.65) 100%);
+      color: #FFFFFF;
+      border-color: rgba(110, 231, 183, 0.45);
+    }
+    .pill-green i { font-size: 14px; }
+
+    /* Toast Notification */
+    #toast {
+      position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%);
+      background: #10B981; color: #FFF; font-weight: 800; font-size: 13px;
+      padding: 10px 22px; border-radius: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+      display: none; z-index: 1001;
+    }
+
+    /* Global Footer (AEG 사 공식 기업 정보 푸터) */
+    .site-footer {
+      background: #060A13;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 44px 20px 40px;
+      color: #94A3B8;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    .footer-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: 900;
+      color: #FFFFFF;
+      margin-bottom: 14px;
+    }
+    .footer-brand span { color: var(--gold); }
+    .footer-desc {
+      font-size: 13.5px;
+      color: #94A3B8;
+      margin-bottom: 20px;
+      line-height: 1.65;
+      word-break: keep-all;
+    }
+    .footer-info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 22px;
+    }
+    .info-line { display: flex; gap: 8px; font-size: 12.5px; }
+    .info-label { color: #64748B; font-weight: 700; flex-shrink: 0; min-width: 65px; }
+    .info-val { color: #CBD5E1; word-break: break-all; }
+    .footer-disclaimer {
+      font-size: 11.5px;
+      color: #64748B;
+      line-height: 1.6;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 16px;
+      margin-top: 16px;
+    }
+    .footer-copy {
+      margin-top: 14px;
+      font-size: 12px;
+      color: #475569;
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .footer-info-grid { grid-template-columns: 1fr; gap: 8px; padding: 14px; }
+    }
+
+
+    /* Responsive (창 폭이 좁아지면 글자가 찌그러지지 않고 깔끔하게 햄버거 메뉴로 전환) */
+    @media (max-width: 992px) {
+      .nav-menu { display: none; }
+      .mobile-menu-btn { display: block; }
+      .corp-top-bar { display: none; }
+      .swiper-slide { min-height: 440px; padding: 48px 16px 60px; }
+      .slide-title { font-size: 26px; }
+      .slide-desc { font-size: 14px; }
+      .highlight-grid { gap: 6px; }
+      .hl-card { padding: 12px 4px; }
+      .hl-val { font-size: 15px; }
+      .swiper-button-next, .swiper-button-prev { display: none; } /* 모바일에서는 터치 스와이프로 쾌적하게 */
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Top Global Corporate Bar -->
+  <aside class="corp-top-bar">
+    <div class="corp-top-inner">
+      <span><i class="fa-solid fa-building-shield"></i> AEG(Ace Entertainment Global) 공인 비즈니스 포털</span>
+      <span><i class="fa-solid fa-headset"></i> 24시간 상담 센터 : 010-3306-5540</span>
+    </div>
+  </aside>
+
+  <!-- Top Sticky Navigation (메뉴 내비게이션 바) -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-brand">
+        <i class="fa-solid fa-crown" style="color: var(--gold);"></i>
+        AEG <span>프리머니</span>
+        <span class="sub-text">GA 비즈니스</span>
+      </a>
+
+      <!-- Desktop Menu (중앙에 균형 있게 배치) -->
+      <nav style="display: flex; align-items: center; flex: 1;">
+        <ul class="nav-menu">
+          <li><a href="#about-aeg">회사소개</a></li>
+          <li><a href="#benefits">상조5구좌 혜택</a></li>
+          <li><a href="#compensation">보상플랜</a></li>
+          <li><a href="08_AEG_가입절차_안내가이드.html">가입절차안내</a></li>
+          <li><a href="#video">홍보영상</a></li>
+          <li><a href="#faq">자주묻는질문</a></li>
+        </ul>
+        
+        <!-- 우측 끝 무료가입 버튼 -->
+        <div class="nav-right-btn-wrap">
+          <a href="https://www.enjoy26.com/signup?referralCode=2JL3HD" target="_blank" class="nav-menu-btn">
+            <i class="fa-solid fa-user-plus"></i> 무료가입
+          </a>
+        </div>
+      </nav>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="메뉴 열기">
+        <i class="fa-solid fa-bars" id="menuIcon"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="#about-aeg" onclick="toggleMenu()"><i class="fa-solid fa-building"></i> AEG 회사 소개</a>
+    <a href="#benefits" onclick="toggleMenu()"><i class="fa-solid fa-gift"></i> 상조 5구좌 멤버십 혜택</a>
+    <a href="#compensation" onclick="toggleMenu()"><i class="fa-solid fa-coins"></i> 보상플랜 및 연금</a>
+    <a href="08_AEG_가입절차_안내가이드.html" onclick="toggleMenu()"><i class="fa-solid fa-list-check"></i> 4단계 초간단 가입절차 안내</a>
+    <a href="#video" onclick="toggleMenu()"><i class="fa-solid fa-film"></i> 공식 홍보영상</a>
+    <a href="#faq" onclick="toggleMenu()"><i class="fa-solid fa-circle-question"></i> 자주 묻는 질문 (FAQ)</a>
+    <a href="#manager" onclick="toggleMenu()"><i class="fa-solid fa-user-tie"></i> 대표 파트너 상담 / 가입</a>
+  </div>
+
+
+  <!-- =========================================================
+       HERO SWIPER SLIDER (배경 이미지 & 3장면 터치 스와이프 기능)
+       ========================================================= -->
+  <section class="hero-swiper-container" id="hero">
+    <div class="swiper myHeroSwiper">
+      <div class="swiper-wrapper">
+        
+        <!-- 슬라이드 1 : 프리머니 프로젝트 & 0원 연금 비전 -->
+        <div class="swiper-slide slide-bg-1">
+          <div class="slide-content">
+            <div class="slide-badge">
+              <i class="fa-solid fa-sparkles"></i> AEG 사의 대표 혁신 금융 모델
+            </div>
+            <h1 class="slide-title">
+              내 돈 <em>단 1원도 안 들이고</em><br>
+              매월 따박따박 평생 연금!
+            </h1>
+            <p class="slide-desc">
+              초기 자본금 0원, 월 유지비 0원(회사 100% 대납 지원)!<br>
+              피해자 0%의 제도권 GA 금융 플랫폼에서 평생 파이프라인을 완성하세요.
+            </p>
+            <div class="slide-btn-group">
+              <a href="https://www.enjoy26.com/signup?referralCode=2JL3HD" target="_blank" class="btn-main">
+                <i class="fa-solid fa-user-plus"></i> 0원 파트너 등록하기
+              </a>
+              <a href="tel:010-3306-5540" class="btn-sub">
+                <i class="fa-solid fa-phone"></i> 대표 직통 무료상담
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 슬라이드 2 : 대기업 상조 5구좌 & 프리미엄 리조트 혜택 -->
+        <div class="swiper-slide slide-bg-2">
+          <div class="slide-content">
+            <div class="slide-badge">
+              <i class="fa-solid fa-hotel"></i> 대명소노 3구좌 + 웅진프리드 2구좌
+            </div>
+            <h1 class="slide-title">
+              가입 즉시 누리는<br>
+              <em>대한민국 1등 상조 5구좌</em>
+            </h1>
+            <p class="slide-desc">
+              소노펠리체·비발디파크 리조트 멤버십 할인과 프리미엄 장례·웨딩·크루즈 전환!<br>
+              월 99,000원의 상조 납입금을 회사가 전액 지원하여 든든한 평생 자산이 됩니다.
+            </p>
+            <div class="slide-btn-group">
+              <a href="#benefits" class="btn-main" style="background: linear-gradient(135deg, #D97706, #B45309);">
+                <i class="fa-solid fa-gift"></i> 5구좌 혜택 자세히 보기
+              </a>
+              <a href="tel:010-3306-5540" class="btn-sub">
+                <i class="fa-solid fa-phone"></i> 구좌 개설 문의하기
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 슬라이드 3 : 보상 엔진 & 25대 바이너리 롤업 소득 -->
+        <div class="swiper-slide slide-bg-3">
+          <div class="slide-content">
+            <div class="slide-badge">
+              <i class="fa-solid fa-coins"></i> 1명당 15만원 즉시 + 바이너리 25대
+            </div>
+            <h1 class="slide-title">
+              추천할 때마다 <em>15만원 즉시</em>,<br>
+              잠자는 동안에도 바이너리 연금!
+            </h1>
+            <p class="slide-desc">
+              내가 추천해도 15만P, 상위 스필오버 낙하로 자리만 차도 1명당 1,000원씩!<br>
+              팀과 함께 25대까지 누적되는 마르지 않는 소득 엔진을 직접 경험하세요.
+            </p>
+            <div class="slide-btn-group">
+              <a href="#compensation" class="btn-main" style="background: linear-gradient(135deg, #059669, #047857);">
+                <i class="fa-solid fa-network-wired"></i> 보상플랜 확인하기
+              </a>
+              <a href="https://www.enjoy26.com/signup?referralCode=2JL3HD" target="_blank" class="btn-sub">
+                <i class="fa-solid fa-arrow-right"></i> 바로 파트너 가입
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 슬라이더 컨트롤러 (페이징 & 화살표) -->
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <!-- AEG 사 소개 카드 (회사 소개 섹션) -->
+    <div class="corp-intro-box" id="about-aeg">
+      <div class="corp-intro-header">
+        <i class="fa-solid fa-landmark"></i> AEG 사는 어떤 회사인가요?
+      </div>
+      <p class="corp-intro-desc">
+        <strong>AEG(Ace Entertainment Global)</strong>는 제도권 대기업 상조사(대명소노그룹, 웅진프리드라이프) 및 보험사와 제휴하여 합법적인 금융/상조 GA 마케팅 플랫폼을 운영하는 혁신 기업입니다.<br>
+        기존 다단계/네트워크의 사재기·진입비 피해를 완전히 없애고, GA 모집 수수료를 100% 회원과 파트너에게 환원하는 <strong>'프리머니 프로젝트'</strong>를 통해 대한민국 무자본 연금 비즈니스를 선도하고 있습니다.
+      </p>
+    </div>
+
+    <!-- 3 Key Points Highlight Box -->
+    <div class="highlight-grid">
+      <div class="hl-card c1">
+        <i class="fa-solid fa-wallet"></i>
+        <div class="hl-title">초기 자본금</div>
+        <div class="hl-val">0 원</div>
+      </div>
+      <div class="hl-card c2">
+        <i class="fa-solid fa-shield-heart"></i>
+        <div class="hl-title">사업 피해율</div>
+        <div class="hl-val">0.00 %</div>
+      </div>
+      <div class="hl-card c3">
+        <i class="fa-solid fa-coins"></i>
+        <div class="hl-title">추천당 수당</div>
+        <div class="hl-val">15만 P</div>
+      </div>
+    </div>
+
+    <!-- 2. Business Principle (왜 0원인가?) -->
+    <section class="section-wrap" id="principle">
+      <div class="sec-tag">Business Model</div>
+      <h2 class="sec-title">왜 1원도 들지 않고,<br>피해자가 전혀 없을까요?</h2>
+      <p class="sec-desc">물건을 사재기하거나 매월 유지비를 내는 다단계가 아닙니다. 제도권 금융/상조 GA의 합법적 모집 수수료를 돌려받는 혁신 모델입니다.</p>
+
+      <div class="info-card" style="padding: 0; overflow: hidden;">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>구분</th>
+              <th>기존 네트워크 / 부업</th>
+              <th>AEG 프리머니 프로젝트</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>초기 진입비</strong></td>
+              <td>100~300만원 결제 요구</td>
+              <td><strong>0원 (완전 무료)</strong></td>
+            </tr>
+            <tr>
+              <td><strong>월 유지비</strong></td>
+              <td>매월 물건 사재기/오토십</td>
+              <td><strong>0원 (회사 100% 대납)</strong></td>
+            </tr>
+            <tr>
+              <td><strong>소비자 위험</strong></td>
+              <td>원금 손실 및 인간관계 파탄</td>
+              <td><strong>피해 위험 0% (자본 0원)</strong></td>
+            </tr>
+            <tr>
+              <td><strong>수익 구조</strong></td>
+              <td>소수 상위자만 독식</td>
+              <td><strong>1명만 추천해도 15만원</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 3. 대기업 상조 5구좌 혜택 (핵심 상품 중심) -->
+    <section class="section-wrap" id="benefits">
+      <div class="sec-tag">Product & Benefit</div>
+      <h2 class="sec-title">가입만 해도 주어지는<br>대한민국 1등 상조 5구좌</h2>
+      <p class="sec-desc">내 통장에서 나가는 돈은 0원! 회사가 유지기간 동안 납입금을 전액 지급(대납)하여 든든한 평생 자산이 됩니다.</p>
+
+      <div class="info-card">
+        <div class="benefit-item">
+          <div class="benefit-icon b-amber">
+            <i class="fa-solid fa-hotel"></i>
+          </div>
+          <div class="benefit-content">
+            <h4>대명소노 3구좌 (월 18,000원 × 3)</h4>
+            <p>소노펠리체, 비발디파크, 쏠비치 등 전국 대명리조트 멤버십 할인 및 다양한 레저 혜택 기본 탑재!</p>
+          </div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-icon b-blue">
+            <i class="fa-solid fa-umbrella"></i>
+          </div>
+          <div class="benefit-content">
+            <h4>웅진프리드 2구좌 (월 22,500원 × 2)</h4>
+            <p>업계 1위 웅진프리드라이프의 프리미엄 장례 의전, 웨딩, 크루즈 여행, 어학연수 전환 보장!</p>
+          </div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-icon b-green">
+            <i class="fa-solid fa-hand-holding-dollar"></i>
+          </div>
+          <div class="benefit-content">
+            <h4>총 5구좌 월 99,000원 전액 회사 지원</h4>
+            <p>약정 유지기간(소노 17개월 / 웅진 14개월) 동안 회사가 계좌로 입금 지원하여 고객 부담금 0원!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Compensation Plan (보상플랜 & 롤업) -->
+    <section class="section-wrap" id="compensation">
+      <div class="sec-tag">Compensation Plan</div>
+      <h2 class="sec-title">추천할 때마다 터지는 수당,<br>잠자는 동안에도 쌓이는 연금</h2>
+      <p class="sec-desc">내가 일해서 버는 추천 수당과, 팀이 함께 만들어가는 바이너리 25대 롤업 연금 파이프라인의 환상적 결합입니다.</p>
+
+      <!-- 보상 항목 1 -->
+      <div class="bonus-step">
+        <div class="bonus-left">
+          <div class="bonus-num">1</div>
+          <div>
+            <div class="bonus-title">직접 추천 수당</div>
+            <div class="bonus-sub">1명 모집 시 즉시 지급</div>
+          </div>
+        </div>
+        <div class="bonus-amt">150,000 P</div>
+      </div>
+
+      <!-- 보상 항목 2 -->
+      <div class="bonus-step">
+        <div class="bonus-left">
+          <div class="bonus-num">2</div>
+          <div>
+            <div class="bonus-title">유니레벨 간접 롤업 (10대)</div>
+            <div class="bonus-sub">산하 파트너들의 확장 수당</div>
+          </div>
+        </div>
+        <div class="bonus-amt">총 212,000 P</div>
+      </div>
+
+      <!-- 보상 항목 3 -->
+      <div class="bonus-step">
+        <div class="bonus-left">
+          <div class="bonus-num">3</div>
+          <div>
+            <div class="bonus-title">바이너리 스폰서 롤업 (25대)</div>
+            <div class="bonus-sub">위·아래 스필오버 1인당 1,000원</div>
+          </div>
+        </div>
+        <div class="bonus-amt">최대 수천만원~억대</div>
+      </div>
+
+      <!-- 상조 바이너리 스폰서 롤업 안내 배너 -->
+      <div class="info-card" style="margin-top: 18px; border-color: rgba(59, 130, 246, 0.4); background: rgba(30, 41, 59, 0.5);">
+        <h3 style="font-size: 16px; font-weight: 800; color: #60A5FA; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+          <i class="fa-solid fa-network-wired"></i> 상조 바이너리 25대 연금 파이프라인
+        </h3>
+        <p style="font-size: 13.5px; color: var(--text-sub); line-height: 1.6;">
+          내가 직접 추천하지 않아도 상위에서 내려오는 낙하(스필오버)로 내 산하에 배치만 되면 <strong>1명당 1,000원씩 최대 25대까지 평생 누적</strong>되는 혁신적인 상조 연금 시스템입니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- 5. Future Plan (향후 진행될 보험모집 비즈니스 플랜) -->
+    <section class="section-wrap" id="future-insurance">
+      <div class="future-box">
+        <span class="future-badge"><i class="fa-solid fa-briefcase"></i> 향후 비전 안내</span>
+        <h3 style="font-size: 18px; font-weight: 900; color: #FFF; margin-bottom: 8px;">
+          [준비중] 향후 연계될 보험 GA 직급 및 관리 오버라이딩 플랜
+        </h3>
+        <p style="font-size: 13.5px; color: #CBD5E1; line-height: 1.6; word-break: keep-all; margin-bottom: 16px;">
+          현재 AEG는 <strong>상조 5구좌 0원 플랜</strong>을 중심으로 비즈니스를 전개하고 있으며, 향후에는 <strong>보험 모집 역시 상조 플랜처럼 동일한 무자본 고수익 방식으로 진행하기 위해 준비 중</strong>입니다.<br>
+          현재 <strong>보험설계사 모집이 활발히 진행 중</strong>이며, 아래 직급 승급 요건을 충족하시면 향후 보험 플랜 오픈 시 즉시 이행됩니다.
+        </p>
+
+        <!-- 보험 GA 직급 테이블 카드 -->
+        <div style="background: rgba(0, 0, 0, 0.35); border-radius: 12px; padding: 14px; border: 1px solid rgba(245, 158, 11, 0.25);">
+          <div style="font-size: 13px; font-weight: 800; color: var(--gold); margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+            <i class="fa-solid fa-id-card-clip"></i> 보험 GA 직급 승급 요건 및 관리 오버라이딩 수당
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13.5px;">
+            <div style="background: rgba(255,255,255,0.04); padding: 10px 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+              <span><strong>• 팀장</strong> (본인 포함 산하 3명 / 3%)</span>
+              <span style="color: var(--gold); font-weight: 800;">월 100만 ~ 300만원</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.04); padding: 10px 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+              <span><strong>• 지점장</strong> (본인 포함 산하 10명 / 10%)</span>
+              <span style="color: #F87171; font-weight: 800;">월 500만 ~ 1,000만원</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.04); padding: 10px 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+              <span><strong>• 본부장</strong> (본인 포함 산하 30명 / 30%)</span>
+              <span style="color: var(--gold); font-weight: 800;">월 5,000만원 이상</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Official Video Embed -->
+    <section class="section-wrap" id="video">
+      <div class="sec-tag">Official Video</div>
+      <h2 class="sec-title">영상으로 확인하는<br>AEG 프리머니 비전</h2>
+      <p class="sec-desc">백문이 불여일견! 2분 44초짜리 공식 영상을 직접 시청해 보세요.</p>
+
+      <div class="video-box">
+        <video controls playsinline preload="metadata">
+          <source src="AEG홍보영상.mp4" type="video/mp4">
+          브라우저가 동영상 재생을 지원하지 않습니다.
+        </video>
+      </div>
+      <p style="text-align: center; font-size: 13px; color: var(--text-muted);">
+        <i class="fa-solid fa-play"></i> 재생 버튼을 누르시면 바로 영상을 감상하실 수 있습니다.
+      </p>
+    </section>
+
+    <!-- 7. FAQ Section -->
+    <section class="section-wrap" id="faq">
+      <div class="sec-tag">FAQ</div>
+      <h2 class="sec-title">자주 묻는 질문</h2>
+      
+      <div class="faq-item">
+        <div class="faq-q">
+          <span>Q. 정말 제 돈이 단 1원도 안 들어가나요?</span>
+          <i class="fa-solid fa-chevron-down" style="font-size: 13px; color: var(--text-muted);"></i>
+        </div>
+        <div class="faq-a">
+          네, 100% 사실입니다. 회원가입비나 등록비가 일체 없으며, 상조 5구좌 납입금(월 99,000원)은 회사가 약정 기간 동안 회원님의 계좌로 100% 입금 지원합니다. 따라서 본인 자본금은 0원입니다.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span>Q. 의무 유지기간이 끝나면 어떻게 되나요?</span>
+          <i class="fa-solid fa-chevron-down" style="font-size: 13px; color: var(--text-muted);"></i>
+        </div>
+        <div class="faq-a">
+          소노 17개월, 웅진 14개월의 의무 유지기간이 지나면 본인의 선택에 따라 계속 유지하시거나 해약하실 수 있습니다. 유지기간 동안 수령하신 추천 수당이나 보너스는 일체 반환하지 않습니다.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span>Q. 영업을 전혀 못하는 초보자도 가능한가요?</span>
+          <i class="fa-solid fa-chevron-down" style="font-size: 13px; color: var(--text-muted);"></i>
+        </div>
+        <div class="faq-a">
+          물건을 파는 것이 아니라 "내 돈 0원으로 대기업 상조 혜택과 연금을 받는 법"을 안내하는 것이기 때문에 거절에 대한 부담이 없습니다. 준비된 카톡 홍보문구와 본 랜딩페이지만 전달하셔도 손쉽게 파트너가 모입니다.
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Manager Contact & Final CTA -->
+    <section class="section-wrap" id="manager">
+
+
+      <div class="profile-card">
+        <div class="profile-avatar">
+          <i class="fa-solid fa-user-tie"></i>
+        </div>
+        <div class="profile-name">AEG 공인 공식 파트너</div>
+        <div class="profile-role">프리머니 프로젝트 전문 총괄 상담사</div>
+
+        <div class="contact-box">
+          <div class="ref-code-wrap">
+            <span style="color: var(--text-sub);">추천인 코드:</span>
+            <span class="ref-code" id="refCodeText">2JL3HD</span>
+            <button class="btn-copy" onclick="copyRefCode()">복사</button>
+          </div>
+          <div style="font-size: 13px; color: var(--text-sub);">
+            직통 문의 : <strong style="color: #FFF; font-size: 15px;">010-3306-5540</strong>
+          </div>
+        </div>
+
+        <a href="https://www.enjoy26.com/signup?referralCode=2JL3HD" target="_blank" class="btn-main" style="margin-bottom: 10px; width: 100%;">
+          <i class="fa-solid fa-paper-plane"></i> 추천인 코드 자동적용 회원가입
+        </a>
+        <a href="tel:010-3306-5540" class="btn-sub" style="width: 100%;">
+          <i class="fa-solid fa-phone-volume"></i> 24시간 친절 전화 상담하기
+        </a>
+      </div>
+  </main>
+
+  <!-- Global Footer (AEG 공식 기업 정보 및 안내 푸터) -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <i class="fa-solid fa-crown" style="color: var(--gold);"></i>
+        AEG (Ace Entertainment Global) <span>프리머니 프로젝트</span>
+      </div>
+      
+      <p class="footer-desc">
+        AEG는 글로벌 미디어·디지털 TV 솔루션 및 제도권 대기업 상조사(대명소노그룹, 웅진프리드라이프)와 제휴하여 합법적인 금융/상조 GA 마케팅 생태계를 운영하는 프로슈머 플랫폼 기업입니다.
+      </p>
+
+      <!-- 기업 정보 그리드 -->
+      <div class="footer-info-grid">
+        <div class="info-line">
+          <span class="info-label">회사명 :</span>
+          <span class="info-val">AEG (Ace Entertainment Global)</span>
+        </div>
+        <div class="info-line">
+          <span class="info-label">플랫폼 :</span>
+          <span class="info-val">엔조이26 (enjoy26.com)</span>
+        </div>
+        <div class="info-line">
+          <span class="info-label">글로벌 인프라 :</span>
+          <span class="info-val">해외 23개 자회사 및 글로벌 1,597만 회원 생태계</span>
+        </div>
+        <div class="info-line">
+          <span class="info-label">주요 제휴사 :</span>
+          <span class="info-val">대명소노그룹(소노펠리체), 웅진프리드라이프</span>
+        </div>
+        <div class="info-line">
+          <span class="info-label">담당 총괄 :</span>
+          <span class="info-val">공인 공식 파트너 (직통 상담)</span>
+        </div>
+        <div class="info-line">
+          <span class="info-label">상담 문의 :</span>
+          <span class="info-val"><strong>010-3306-5540</strong> (24시간 안내)</span>
+        </div>
+      </div>
+
+      <div class="footer-disclaimer">
+        ※ 본 웹페이지는 AEG 공식 파트너가 운영하는 비즈니스 안내 및 파트너 모집 전용 랜딩페이지입니다.<br>
+        ※ 본 사업은 자본금 0원으로 시작하는 합법적 모집 수수료 공유 모델이며, 상조 5구좌 납입금은 회사의 약정 규정에 따라 전액 입금 대납 지원됩니다.
+      </div>
+
+      <div class="footer-copy">
+        Copyright © AEG (Ace Entertainment Global) & Free Money Project. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Floating Pill Quick Action Buttons (우측 하단 플로팅 캡슐 알약 버튼 그룹) -->
+  <aside class="floating-quick-wrap">
+    <!-- 1. 전화 상담 / 직통 연결 -->
+    <a href="tel:010-3306-5540" class="pill-action-btn pill-gold">
+      <i class="fa-solid fa-phone-volume"></i>
+      <span>전화예약·상담</span>
+    </a>
+
+    <!-- 2. 파트너 0원 회원가입 -->
+    <a href="https://www.enjoy26.com/signup?referralCode=2JL3HD" target="_blank" class="pill-action-btn pill-blue">
+      <i class="fa-solid fa-user-plus"></i>
+      <span>0원 파트너 가입</span>
+    </a>
+
+    <!-- 3. 카톡/문자 상담 -->
+    <a href="sms:010-3306-5540?body=AEG 프리머니 프로젝트 사업 문의드립니다." class="pill-action-btn pill-green">
+      <i class="fa-solid fa-comment-dots"></i>
+      <span>1:1 문자·톡 문의</span>
+    </a>
+  </aside>
+
+  <!-- Copy Toast -->
+  <div id="toast">추천인 코드가 복사되었습니다!</div>
+
+  <!-- Swiper.js Slider Script -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <script>
+    // Swiper Slider 인스턴스 초기화 (터치 스와이프 + 자동 재생 + 루프)
+    const swiper = new Swiper('.myHeroSwiper', {
+      loop: true,
+      speed: 700,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      effect: 'slide',
+    });
+
+    // 메뉴 열고 닫기 토글
+    function toggleMenu() {
+      const drawer = document.getElementById('mobileDrawer');
+      const icon = document.getElementById('menuIcon');
+      if (drawer.classList.contains('open')) {
+        drawer.classList.remove('open');
+        icon.classList.remove('fa-xmark');
+        icon.classList.add('fa-bars');
+      } else {
+        drawer.classList.add('open');
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-xmark');
+      }
+    }
+
+    // 추천코드 복사
+    function copyRefCode() {
+      const code = document.getElementById('refCodeText').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        showToast('추천인 코드(' + code + ')가 복사되었습니다!');
+      }).catch(() => {
+        showToast('복사 완료: ' + code);
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.innerText = msg;
+      toast.style.display = 'block';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 2500);
+    }
+
+    // 메뉴 클릭 및 스크롤 시 해당 메뉴 활성화 (Active 하이라이트)
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    
+    // 1. 메뉴 직접 클릭 시 즉시 골드 색상 부여
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        navLinks.forEach(item => item.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // 2. 스크롤할 때 현재 화면에 보이는 섹션 메뉴 자동 골드 하이라이트 (ScrollSpy)
+    const sections = document.querySelectorAll('section[id], div[id="about-aeg"]');
+    window.addEventListener('scroll', () => {
+      let currentSectionId = '';
+      const scrollY = window.pageYOffset;
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.offsetHeight;
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          currentSectionId = section.getAttribute('id');
+        }
+      });
+
+      if (currentSectionId) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${currentSectionId}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>

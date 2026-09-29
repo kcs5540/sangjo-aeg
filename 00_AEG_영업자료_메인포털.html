@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEG 상조 GA 영업 자료 통합 포털</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pretendard', sans-serif; }
+    body { background-color: #0F172A; color: #F8FAFC; line-height: 1.6; padding: 40px 20px; min-height: 100vh; }
+    .container { max-width: 860px; margin: 0 auto; }
+    .header { text-align: center; margin-bottom: 36px; }
+    .header h1 { font-size: 30px; font-weight: 900; color: #FFFFFF; letter-spacing: -0.5px; }
+    .header h1 span { color: #F59E0B; }
+    .header p { color: #94A3B8; font-size: 15px; margin-top: 8px; }
+    
+    .grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    
+    .item-card {
+      background: #1E293B;
+      border: 1px solid #334155;
+      border-radius: 14px;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+    .item-card:hover {
+      background: #27354F;
+      border-color: #3B82F6;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+    
+    .item-left { display: flex; align-items: center; gap: 18px; }
+    .item-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .bg-blue { background: rgba(59, 130, 246, 0.15); color: #60A5FA; }
+    .bg-green { background: rgba(34, 197, 94, 0.15); color: #4ADE80; }
+    .bg-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; }
+    .bg-purple { background: rgba(168, 85, 247, 0.15); color: #C084FC; }
+    .bg-rose { background: rgba(244, 63, 94, 0.15); color: #FB7185; }
+    
+    .item-info h2 { font-size: 17px; font-weight: 800; color: #FFFFFF; }
+    .item-info p { font-size: 13px; color: #94A3B8; margin-top: 4px; }
+    
+    .btn-open {
+      background: #2563EB;
+      color: #FFFFFF;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .btn-open:hover { background: #1D4ED8; }
+    
+    .footer { text-align: center; margin-top: 40px; color: #64748B; font-size: 13px; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <h1>AEG 상조 GA <span>영업 자료 통합 센터</span></h1>
+      <p>원하시는 자료 버튼을 누르면 브라우저에서 바로 열립니다.</p>
+    </div>
+
+    <div class="grid">
+      <!-- 07. 대표 전용 홍보 랜딩페이지 -->
+      <a href="07_AEG_개인_홍보용_랜딩페이지.html" class="item-card" style="border: 2px solid #F59E0B; background: linear-gradient(145deg, #1E293B, #172554);">
+        <div class="item-left">
+          <div class="item-icon bg-amber" style="background: rgba(245, 158, 11, 0.25); color: #F59E0B;">
+            <i class="fa-solid fa-crown"></i>
+          </div>
+          <div class="item-info">
+            <h2 style="color: #FDE68A;">⭐ [대표님 전용] AEG 프리머니 홍보 홈페이지 (랜딩페이지)</h2>
+            <p>010-3306-5540 직통 전화 연결 및 가입링크 탑재, 상조 5구좌 0원 플랜 + 보험 확장 안내</p>
+          </div>
+        </div>
+        <div class="btn-open" style="background: #F59E0B; color: #000; font-weight: 800;"><i class="fa-solid fa-arrow-up-right-from-square"></i> 열기</div>
+      </a>
+
+      <!-- 08. 가입절차 안내 가이드 -->
+      <a href="08_AEG_가입절차_안내가이드.html" class="item-card" style="border: 1px solid #10B981; background: rgba(16, 185, 129, 0.08);">
+        <div class="item-left">
+          <div class="item-icon bg-green">
+            <i class="fa-solid fa-list-check"></i>
+          </div>
+          <div class="item-info">
+            <h2 style="color: #6EE7B7;">08. [초간단 4단계] AEG 프리머니 파트너 가입절차 가이드</h2>
+            <p>회원가입 → 로그인 → 쇼핑몰에서 대명3구좌/웅진2구좌 접수 → 해피콜 완료 순서</p>
+          </div>
+        </div>
+        <div class="btn-open" style="background: #10B981;"><i class="fa-solid fa-arrow-up-right-from-square"></i> 열기</div>
+      </a>
+
+
+
+      <!-- 1번 -->
+      <a href="01_AEG_1장_사업설명_브리핑시트.html" class="item-card" target="_blank">
+        <div class="item-left">
+          <div class="item-icon bg-amber"><i class="fas fa-file-invoice"></i></div>
+          <div class="item-info">
+            <h2>01. 1장 사업설명 브리핑 시트 (대면 미팅용)</h2>
+            <p>테이블 위에서 태블릿이나 A4 인쇄물로 5분 만에 클로징하는 핵심 인포그래픽</p>
+          </div>
+        </div>
+        <div class="btn-open">열기 <i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <!-- 2번 -->
+      <a href="02_실전_카톡_문자_홍보문구_3종세트.html" class="item-card" target="_blank">
+        <div class="item-left">
+          <div class="item-icon bg-green"><i class="fas fa-comment-dots"></i></div>
+          <div class="item-info">
+            <h2>02. 실전 카톡·문자 홍보문구 3종세트 (원클릭 복사)</h2>
+            <p>지인용 / N잡 부업용 / 설계사 리더용 맞춤 메시지 및 원클릭 복사 기능</p>
+          </div>
+        </div>
+        <div class="btn-open">열기 <i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <!-- 3번 -->
+      <a href="03_센터장_판서_보상플랜_정밀분석.html" class="item-card" target="_blank">
+        <div class="item-left">
+          <div class="item-icon bg-blue"><i class="fas fa-chart-line"></i></div>
+          <div class="item-info">
+            <h2>03. 센터장 판서 보상플랜 정밀분석</h2>
+            <p>1~10대 추천 롤업(21.2만), 25대 바이너리 롤업, GA 시책 요율표 정리</p>
+          </div>
+        </div>
+        <div class="btn-open">열기 <i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <!-- 4번 -->
+      <a href="04_AEG_사업모델_및_상조5구좌_규정.html" class="item-card" target="_blank">
+        <div class="item-left">
+          <div class="item-icon bg-purple"><i class="fas fa-boxes"></i></div>
+          <div class="item-info">
+            <h2>04. 상조 5구좌 규정 및 대납 기준표</h2>
+            <p>웅진 2구좌(20일/14개월) + 대명 3구좌(15일/17개월) = 월 99,000원 대납 안내</p>
+          </div>
+        </div>
+        <div class="btn-open">열기 <i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <!-- 5번 -->
+      <a href="05_AEG_공식홍보영상_대본_및_분석.html" class="item-card" target="_blank">
+        <div class="item-left">
+          <div class="item-icon bg-rose"><i class="fas fa-video"></i></div>
+          <div class="item-info">
+            <h2>05. 공식 홍보영상 대본 및 마케팅 분석</h2>
+            <p>홍보영상(2분 44초) 성우 내레이션 전문 및 상조 비즈니스 매핑 포인트</p>
+          </div>
+        </div>
+        <div class="btn-open">열기 <i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <!-- 6번 -->
+      <a href="06_영업사업자_성공_로드맵.html" class="item-card" target="_blank">
+        <div class="item-left">
+          <div class="item-icon bg-blue"><i class="fas fa-map-marked-alt"></i></div>
+          <div class="item-info">
+            <h2>06. 영업사업자 월 1,000만원 달성 로드맵</h2>
+            <p>1단계(2명 직추) → 2단계(팀장) → 3단계(지점장 월 1,000만) 실전 행동 지침</p>
+          </div>
+        </div>
+        <div class="btn-open">열기 <i class="fas fa-arrow-right"></i></div>
+      </a>
+
+    </div>
+
+    <div class="footer">
+      AEG 상조 GA 파트너스 | 공식 전산: enjoy26.com
+    </div>
+  </div>
+
+</body>
+</html>
