@@ -53,11 +53,19 @@
     .sec-title i { color: var(--blue); }
 
     /* Pipeline Diagram */
-    .flow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 24px; }
-    .flow-card { background: #F8FAFC; border: 1.5px solid var(--border); border-radius: 12px; padding: 16px 14px; text-align: center; position: relative; }
-    .flow-step { font-size: 11px; font-weight: 800; color: var(--blue); margin-bottom: 4px; text-transform: uppercase; }
-    .flow-name { font-size: 14px; font-weight: 900; color: var(--primary-dark); margin-bottom: 6px; }
+    .flow-container { display: flex; align-items: stretch; gap: 10px; margin-bottom: 24px; position: relative; }
+    .flow-card { flex: 1; background: #F8FAFC; border: 1.5px solid var(--border); border-radius: 14px; padding: 18px 14px; text-align: center; display: flex; flex-direction: column; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+    .flow-step { font-size: 11px; font-weight: 800; color: var(--blue); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .flow-name { font-size: 14.5px; font-weight: 900; color: var(--primary-dark); margin-bottom: 8px; line-height: 1.35; }
     .flow-desc { font-size: 11.5px; color: var(--text-sub); line-height: 1.45; }
+    
+    /* Interactive Flow Connectors */
+    .flow-connector { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 110px; flex-shrink: 0; position: relative; padding: 0 2px; }
+    .connector-badge { background: #FFF; border: 1.5px solid var(--blue); color: var(--blue); font-size: 10.5px; font-weight: 800; padding: 4px 8px; border-radius: 12px; white-space: nowrap; margin-bottom: 6px; box-shadow: 0 2px 5px rgba(37,99,235,0.12); text-align: center; }
+    .connector-arrow { display: flex; align-items: center; justify-content: center; color: var(--blue); font-size: 18px; width: 100%; position: relative; }
+    .connector-line { flex: 1; height: 2px; background: repeating-linear-gradient(to right, var(--blue) 0, var(--blue) 5px, transparent 5px, transparent 9px); }
+    .connector-arrow i { margin-left: -2px; }
+    .connector-sub { font-size: 10px; color: var(--text-sub); margin-top: 4px; font-weight: 700; text-align: center; }
 
     /* Tables */
     .table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 16px 0; border: 1px solid var(--border); border-radius: 12px; }
@@ -96,7 +104,11 @@
       .container { padding: 20px 14px; border-radius: 14px; }
       .doc-title { font-size: 21px; }
       .doc-subtitle { font-size: 13.5px; }
-      .flow-grid { grid-template-columns: 1fr; gap: 10px; }
+      .flow-container { flex-direction: column; gap: 8px; }
+      .flow-connector { width: 100%; flex-direction: row; justify-content: center; gap: 10px; padding: 6px 0; }
+      .connector-arrow { display: none; }
+      .connector-badge { margin-bottom: 0; font-size: 11px; }
+      .connector-sub { margin-top: 0; font-size: 11px; }
       .card-grid-3 { grid-template-columns: 1fr; gap: 10px; }
       .sec-title { font-size: 17px; margin-top: 28px; }
       table { font-size: 12px; }
@@ -143,21 +155,46 @@
     <!-- 1. Structure Analysis -->
     <h2 class="sec-title"><i class="fa-solid fa-diagram-project"></i> 1. 비즈니스 3단계 파이프라인 구조</h2>
     
-    <div class="flow-grid">
+    <div class="flow-container">
+      <!-- Step 1 -->
       <div class="flow-card">
         <div class="flow-step">STEP 1. 원청 상조 본사</div>
         <div class="flow-name">(주)대명스테이션 · 웅진프리드라이프</div>
-        <div class="flow-desc">선수금 50% 법적 예치 및 보장<br>대명 3구좌 + 웅진 2구좌 멤버십</div>
+        <div class="flow-desc">선수금 50% 공제조합 법적 안전 예치<br>대명 3구좌 + 웅진 2구좌 멤버십 보장</div>
       </div>
+
+      <!-- Connector 1 -> 2 -->
+      <div class="flow-connector">
+        <div class="connector-badge">B2B 제휴 및 수수료</div>
+        <div class="connector-arrow">
+          <div class="connector-line"></div>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <div class="connector-sub">대량 회원 유치 연동</div>
+      </div>
+
+      <!-- Step 2 -->
       <div class="flow-card" style="border-color: var(--blue); background: #EFF6FF;">
         <div class="flow-step">STEP 2. 마케팅 플랫폼</div>
         <div class="flow-name">AEG (enjoy26)</div>
-        <div class="flow-desc">100% 대납 지원금(월 99,000원) 지급<br>10대·25대 롤업 수당 전산 정산</div>
+        <div class="flow-desc">100% 대납 지원금(월 99,000원) 지급<br>10대·25대 롤업 수당 전산 실시간 정산</div>
       </div>
+
+      <!-- Connector 2 -> 3 -->
+      <div class="flow-connector">
+        <div class="connector-badge">월납금 0원 + 수당</div>
+        <div class="connector-arrow">
+          <div class="connector-line"></div>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <div class="connector-sub">조직 복제 및 리크루팅</div>
+      </div>
+
+      <!-- Step 3 -->
       <div class="flow-card" style="border-color: var(--gold); background: #FFFBEB;">
         <div class="flow-step">STEP 3. 현장 파트너</div>
         <div class="flow-name">가입회원(영업회원) & 조직</div>
-        <div class="flow-desc">0원으로 혜택 누리고<br>평생 연금 파이프라인 구축</div>
+        <div class="flow-desc">0원으로 상조·리조트 누리고<br>무자본 평생 연금 파이프라인 완성</div>
       </div>
     </div>
 
