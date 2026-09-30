@@ -59,13 +59,15 @@
     .flow-name { font-size: 14.5px; font-weight: 900; color: var(--primary-dark); margin-bottom: 8px; line-height: 1.35; }
     .flow-desc { font-size: 11.5px; color: var(--text-sub); line-height: 1.45; }
     
-    /* Interactive Flow Connectors */
-    .flow-connector { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 110px; flex-shrink: 0; position: relative; padding: 0 2px; }
-    .connector-badge { background: #FFF; border: 1.5px solid var(--blue); color: var(--blue); font-size: 10.5px; font-weight: 800; padding: 4px 8px; border-radius: 12px; white-space: nowrap; margin-bottom: 6px; box-shadow: 0 2px 5px rgba(37,99,235,0.12); text-align: center; }
-    .connector-arrow { display: flex; align-items: center; justify-content: center; color: var(--blue); font-size: 18px; width: 100%; position: relative; }
-    .connector-line { flex: 1; height: 2px; background: repeating-linear-gradient(to right, var(--blue) 0, var(--blue) 5px, transparent 5px, transparent 9px); }
-    .connector-arrow i { margin-left: -2px; }
-    .connector-sub { font-size: 10px; color: var(--text-sub); margin-top: 4px; font-weight: 700; text-align: center; }
+    /* Interactive Flow Connectors (Bidirectional Two-Way) */
+    .flow-connector { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 140px; flex-shrink: 0; position: relative; padding: 0 4px; gap: 8px; }
+    .connector-flow { width: 100%; display: flex; flex-direction: column; align-items: center; }
+    .connector-badge { background: #FFF; border: 1.5px solid var(--blue); color: var(--blue); font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 12px; white-space: nowrap; margin-bottom: 3px; box-shadow: 0 2px 5px rgba(37,99,235,0.12); text-align: center; }
+    .connector-badge.badge-green { border-color: #059669; color: #059669; box-shadow: 0 2px 5px rgba(5,150,105,0.12); }
+    .connector-arrow-row { display: flex; align-items: center; justify-content: center; color: var(--blue); font-size: 13px; width: 100%; position: relative; }
+    .connector-arrow-row.arrow-green { color: #059669; }
+    .connector-line { flex: 1; height: 2px; background: repeating-linear-gradient(to right, currentColor 0, currentColor 4px, transparent 4px, transparent 8px); }
+    .connector-label-sub { font-size: 9.5px; color: var(--text-sub); margin-top: 2px; font-weight: 700; text-align: center; line-height: 1.2; }
 
     /* Tables */
     .table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 16px 0; border: 1px solid var(--border); border-radius: 12px; }
@@ -105,10 +107,11 @@
       .doc-title { font-size: 21px; }
       .doc-subtitle { font-size: 13.5px; }
       .flow-container { flex-direction: column; gap: 8px; }
-      .flow-connector { width: 100%; flex-direction: row; justify-content: center; gap: 10px; padding: 6px 0; }
-      .connector-arrow { display: none; }
+      .flow-connector { width: 100%; flex-direction: column; align-items: stretch; gap: 6px; padding: 8px 10px; background: #F1F5F9; border-radius: 10px; }
+      .connector-flow { flex-direction: row; justify-content: space-between; align-items: center; }
+      .connector-arrow-row { display: none; }
       .connector-badge { margin-bottom: 0; font-size: 11px; }
-      .connector-sub { margin-top: 0; font-size: 11px; }
+      .connector-label-sub { margin-top: 0; font-size: 11px; }
       .card-grid-3 { grid-template-columns: 1fr; gap: 10px; }
       .sec-title { font-size: 17px; margin-top: 28px; }
       table { font-size: 12px; }
@@ -163,14 +166,27 @@
         <div class="flow-desc">선수금 50% 공제조합 법적 안전 예치<br>대명 3구좌 + 웅진 2구좌 멤버십 보장</div>
       </div>
 
-      <!-- Connector 1 -> 2 -->
+      <!-- Connector 1 <-> 2 (양방향 연결) -->
       <div class="flow-connector">
-        <div class="connector-badge">B2B 제휴 및 수수료</div>
-        <div class="connector-arrow">
-          <div class="connector-line"></div>
-          <i class="fa-solid fa-chevron-right"></i>
+        <!-- 순방향: 상조사 -> AEG -->
+        <div class="connector-flow">
+          <div class="connector-badge">B2B 제휴 및 수수료 지급</div>
+          <div class="connector-arrow-row">
+            <div class="connector-line"></div>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+          <div class="connector-label-sub">대량 모집 커미션 정산</div>
         </div>
-        <div class="connector-sub">대량 회원 유치 연동</div>
+
+        <!-- 역방향: AEG -> 상조사 -->
+        <div class="connector-flow">
+          <div class="connector-label-sub">대규모 신규 고객 DB 공급</div>
+          <div class="connector-arrow-row arrow-green">
+            <i class="fa-solid fa-chevron-left"></i>
+            <div class="connector-line"></div>
+          </div>
+          <div class="connector-badge badge-green">상조 회원 청약 유치</div>
+        </div>
       </div>
 
       <!-- Step 2 -->
@@ -180,14 +196,27 @@
         <div class="flow-desc">100% 대납 지원금(월 99,000원) 지급<br>10대·25대 롤업 수당 전산 실시간 정산</div>
       </div>
 
-      <!-- Connector 2 -> 3 -->
+      <!-- Connector 2 <-> 3 (양방향 연결) -->
       <div class="flow-connector">
-        <div class="connector-badge">월납금 0원 + 수당</div>
-        <div class="connector-arrow">
-          <div class="connector-line"></div>
-          <i class="fa-solid fa-chevron-right"></i>
+        <!-- 순방향: AEG -> 파트너 -->
+        <div class="connector-flow">
+          <div class="connector-badge">월납금 100% 대납 + 수당</div>
+          <div class="connector-arrow-row">
+            <div class="connector-line"></div>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+          <div class="connector-label-sub">현금 보상 및 연금 파이프라인</div>
         </div>
-        <div class="connector-sub">조직 복제 및 리크루팅</div>
+
+        <!-- 역방향: 파트너 -> AEG -->
+        <div class="connector-flow">
+          <div class="connector-label-sub">조직 확장 & 바이너리 구축</div>
+          <div class="connector-arrow-row arrow-green">
+            <i class="fa-solid fa-chevron-left"></i>
+            <div class="connector-line"></div>
+          </div>
+          <div class="connector-badge badge-green">회원 추천 및 리크루팅</div>
+        </div>
       </div>
 
       <!-- Step 3 -->
