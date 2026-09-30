@@ -183,6 +183,52 @@
       border-radius: 8px;
       font-size: 13px;
     }
+
+    /* 모바일 & 태블릿 반응형 스타일 (스마트폰 최적화) */
+    @media (max-width: 768px) {
+      body { padding: 12px 10px; }
+      .sheet { padding: 22px 16px; border-radius: 12px; }
+      
+      /* 헤더 반응형 */
+      .header { flex-direction: column; align-items: flex-start; gap: 12px; padding-bottom: 16px; }
+      .header h1 { font-size: 21px; word-break: keep-all; }
+      .header-right { text-align: left; width: 100%; }
+      .no-risk { display: inline-block; width: 100%; text-align: center; }
+
+      /* 3대 핵심 원칙 1열 배치 */
+      .principles-grid { grid-template-columns: 1fr; gap: 10px; }
+      .p-card { display: flex; align-items: center; text-align: left; gap: 14px; padding: 14px; }
+      .p-card i { margin-bottom: 0; font-size: 22px; flex-shrink: 0; width: 32px; text-align: center; }
+      .p-card h3 { font-size: 15px; margin-bottom: 2px; }
+      .p-card p { font-size: 12.5px; }
+
+      /* 메인 2열 그리드 1열로 전환 */
+      .content-grid { grid-template-columns: 1fr; gap: 16px; }
+      .box { padding: 16px 14px; }
+      .box-title { font-size: 16px; }
+
+      /* 상품 아이템 텍스트 가독성 */
+      .prod-header { font-size: 14px; }
+      .prod-body { font-size: 12.5px; line-height: 1.5; }
+      .total-banner { padding: 14px 12px; }
+      .total-banner .amount { font-size: 16px; margin-top: 4px; word-break: keep-all; }
+
+      /* 10대 추천 수당 표 모바일 글자 크기 및 여백 최적화 */
+      .bonus-table { font-size: 12px; }
+      .bonus-table th, .bonus-table td { padding: 8px 6px; }
+      .table-footer { font-size: 12.5px; text-align: center; }
+
+      /* 하단 바이너리 & 직급 체계 1열 전환 */
+      .bottom-section { padding: 16px 14px; }
+      .binary-flex { grid-template-columns: 1fr; gap: 18px; }
+      .sub-box h4 { font-size: 15px; }
+      .sub-box p { font-size: 12.5px; line-height: 1.7; }
+
+      /* 풋터 액션 1열 전환 */
+      .footer-action { flex-direction: column; text-align: center; gap: 14px; padding: 18px 16px; }
+      .footer-text h3 { font-size: 15px; word-break: keep-all; }
+      .contact-badge { width: 100%; text-align: center; font-size: 14px; padding: 10px 16px; }
+    }
   </style>
 </head>
 <body>
@@ -349,7 +395,6 @@
           <p>
             • <b>팀장 (산하 3명):</b> 월 100만 ~ 300만원 소득<br>
             • <b>지점장 (산하 10명):</b> <span class="highlight">월 500만 ~ 1,000만원</span> 달성<br>
-            &nbsp;&nbsp;*(본인 포함 산하 10명만 모이면 지점장 안착 / 대납 기간 내 초고속 달성)*<br>
             • <b>본부장 (산하 30명):</b> <span class="gold">월 5,000만원 이상</span> 고소득 센터장<br>
             • <b>보험 GA 1200%</b> 시책과 연계된 안정적 재원
           </p>
