@@ -1734,9 +1734,7 @@
         if (roleDisplay) roleDisplay.innerText = cleanName + ' 파트너 전문 상담';
         if (footerName) footerName.innerText = cleanName + ' 파트너 (직통 상담)';
         
-        // 플로팅 상담 버튼 텍스트 변경
-        const floatSmsText = document.getElementById('floatSmsText');
-        if (floatSmsText) floatSmsText.innerText = cleanName + ' 파트너 문의';
+        // 플로팅 상담 버튼 텍스트는 이름 없이 깔끔하게 유지 ('1:1 문자·톡 문의')
       }
 
       // (2) 전화번호 반영
