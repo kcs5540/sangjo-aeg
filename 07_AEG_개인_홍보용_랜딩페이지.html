@@ -826,8 +826,11 @@
           <li><a href="#materials" style="color: #FDE68A;"><i class="fa-solid fa-folder-open" style="color: var(--gold);"></i> 영업자료실</a></li>
         </ul>
         
-        <!-- 우측 끝 무료가입 버튼 -->
-        <div class="nav-right-btn-wrap">
+        <!-- 우측 끝 버튼 그룹 (내 홍보링크 만들기 + 무료가입) -->
+        <div class="nav-right-btn-wrap" style="display: flex; align-items: center; gap: 8px;">
+          <button onclick="openPartnerModal()" class="nav-menu-btn" style="background: linear-gradient(135deg, #7C3AED, #6D28D9); border-color: rgba(216, 180, 254, 0.5); cursor: pointer;">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> 내 홍보링크 만들기
+          </button>
           <a href="https://www.enjoy26.com/signup" target="_blank" class="nav-menu-btn">
             <i class="fa-solid fa-user-plus"></i> 무료가입
           </a>
@@ -843,6 +846,11 @@
 
   <!-- Mobile Drawer Menu -->
   <div class="mobile-drawer" id="mobileDrawer">
+    <div style="padding: 10px 14px 4px;">
+      <button onclick="toggleMenu(); openPartnerModal();" style="width: 100%; padding: 12px; border-radius: 10px; background: linear-gradient(135deg, #7C3AED, #6D28D9); color: #FFF; font-weight: 800; font-size: 14px; border: 1.5px solid rgba(216, 180, 254, 0.6); display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);">
+        <i class="fa-solid fa-wand-magic-sparkles" style="color: #FDE68A;"></i> ✨ 나만의 홍보링크 만들기
+      </button>
+    </div>
     <a href="#about-aeg" onclick="toggleMenu()"><i class="fa-solid fa-building"></i> AEG 회사 소개</a>
     <a href="#benefits" onclick="toggleMenu()"><i class="fa-solid fa-gift"></i> 상조 5구좌 멤버십 혜택</a>
     <a href="#compensation" onclick="toggleMenu()"><i class="fa-solid fa-coins"></i> 보상플랜 및 연금</a>
@@ -960,9 +968,14 @@
           <span class="text-freemoney" style="font-size: 16px;">Free Money Project</span>
           <p style="font-size: 13px; color: #CBD5E1; margin-top: 2px;">진입비용 0원 + 15개월 전액 지원 + 자동 바이너리 수익</p>
         </div>
-        <a href="#freemoney-intro" class="btn-sub" style="padding: 8px 16px; font-size: 13px; border-color: rgba(245, 158, 11, 0.5); color: #FDE68A; background: rgba(245, 158, 11, 0.15);">
-          AEG 자세히 알아보기 <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i>
-        </a>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button onclick="openPartnerModal()" class="btn-sub" style="padding: 8px 14px; font-size: 12.5px; border-color: #8B5CF6; color: #DDD6FE; background: rgba(139, 92, 246, 0.2); cursor: pointer;">
+            <i class="fa-solid fa-wand-magic-sparkles" style="color: #F59E0B;"></i> 내 홍보링크 만들기
+          </button>
+          <a href="#freemoney-intro" class="btn-sub" style="padding: 8px 14px; font-size: 12.5px; border-color: rgba(245, 158, 11, 0.5); color: #FDE68A; background: rgba(245, 158, 11, 0.15);">
+            AEG 자세히 알아보기 <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i>
+          </a>
+        </div>
       </div>
     </div>
 
