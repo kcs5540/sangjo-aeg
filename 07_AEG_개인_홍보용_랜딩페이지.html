@@ -644,6 +644,96 @@
       text-align: center;
     }
 
+    /* 4. 나만의 링크 생성기 보라색 플로팅 버튼 */
+    .pill-purple {
+      background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+      color: #FFFFFF !important;
+      border-color: rgba(216, 180, 254, 0.6);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
+    }
+    .pill-purple i { font-size: 13.5px; }
+
+    /* 나만의 링크 생성기 모달 창 */
+    .partner-modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none; align-items: center; justify-content: center;
+      z-index: 9999; padding: 20px;
+    }
+    .partner-modal-box {
+      background: #0F172A;
+      border: 1.5px solid #3B82F6;
+      border-radius: 20px;
+      width: 100%; max-width: 500px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      overflow: hidden;
+      animation: modalFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.92) translateY(10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .partner-modal-header {
+      background: linear-gradient(135deg, #1E3A8A, #1E293B);
+      padding: 18px 22px;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .partner-modal-title {
+      font-size: 17px; font-weight: 900; color: #FFF; display: flex; align-items: center; gap: 8px;
+    }
+    .partner-modal-close {
+      background: none; border: none; color: #94A3B8; font-size: 20px; cursor: pointer; padding: 4px;
+    }
+    .partner-modal-close:hover { color: #FFF; }
+    .partner-modal-body {
+      padding: 22px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .partner-input-group {
+      margin-bottom: 14px;
+    }
+    .partner-input-group label {
+      display: block; font-size: 13px; font-weight: 700; color: #CBD5E1; margin-bottom: 6px;
+    }
+    .partner-input-group label span {
+      color: #F59E0B; font-size: 11.5px; font-weight: 500;
+    }
+    .partner-input {
+      width: 100%; padding: 12px 14px; background: #1E293B; border: 1px solid #334155;
+      border-radius: 10px; color: #FFF; font-size: 14px; outline: none; transition: border-color 0.2s;
+    }
+    .partner-input:focus { border-color: #3B82F6; box-shadow: 0 0 0 2px rgba(59,130,246,0.3); }
+    .partner-input::placeholder { color: #64748B; font-size: 13px; }
+    .partner-btn-generate {
+      width: 100%; padding: 14px; background: linear-gradient(135deg, #2563EB, #1D4ED8);
+      color: #FFF; border: none; border-radius: 12px; font-size: 15px; font-weight: 800;
+      cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+      margin-top: 18px; box-shadow: 0 4px 15px rgba(37,99,235,0.4); transition: filter 0.2s;
+    }
+    .partner-btn-generate:hover { filter: brightness(1.15); }
+    .partner-result-box {
+      margin-top: 18px; padding: 14px; background: #1E293B; border: 1px dashed #475569;
+      border-radius: 12px; display: none;
+    }
+    .partner-result-url {
+      font-size: 12.5px; color: #60A5FA; word-break: break-all; margin-bottom: 10px; font-family: monospace; background: #0F172A; padding: 10px; border-radius: 8px;
+    }
+    .partner-btn-copy-group {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    }
+    .partner-btn-copy-link, .partner-btn-copy-msg {
+      padding: 10px; border: none; border-radius: 8px; font-size: 13px; font-weight: 800;
+      cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+    .partner-btn-copy-link { background: #334155; color: #FFF; }
+    .partner-btn-copy-link:hover { background: #475569; }
+    .partner-btn-copy-msg { background: #F59E0B; color: #000; }
+    .partner-btn-copy-msg:hover { background: #FBBF24; }
+
     @media (max-width: 640px) {
       .footer-info-grid { grid-template-columns: 1fr; gap: 8px; padding: 14px; }
     }
@@ -1375,8 +1465,8 @@
         <div class="profile-avatar">
           <i class="fa-solid fa-user-tie"></i>
         </div>
-        <div class="profile-name">AEG 공인 공식 파트너</div>
-        <div class="profile-role"><span class="text-freemoney" style="font-size: 14px;">⭐ 프리머니 프로젝트</span> 전문 총괄 상담사</div>
+        <div class="profile-name" id="partnerNameDisplay">AEG 공인 공식 파트너</div>
+        <div class="profile-role"><span class="text-freemoney" style="font-size: 14px;">⭐ 프리머니 프로젝트</span> <span id="partnerRoleDisplay">전문 총괄 상담사</span></div>
 
         <div class="contact-box">
           <div class="ref-code-wrap">
@@ -1385,16 +1475,19 @@
             <button class="btn-copy" onclick="copyRefCode()">복사</button>
           </div>
           <div style="font-size: 13px; color: var(--text-sub);">
-            직통 문의 : <strong style="color: #FFF; font-size: 15px;">010-3306-5540</strong>
+            직통 문의 : <strong style="color: #FFF; font-size: 15px;" id="partnerPhoneDisplay">010-3306-5540</strong>
           </div>
         </div>
 
-        <a href="https://www.enjoy26.com/signup" target="_blank" class="btn-main" style="margin-bottom: 10px; width: 100%;">
+        <a href="https://www.enjoy26.com/signup" target="_blank" class="btn-main" id="partnerSignupBtn" style="margin-bottom: 10px; width: 100%;">
           <i class="fa-solid fa-paper-plane"></i> 엔조이26 무료 회원가입 바로가기
         </a>
-        <a href="tel:010-3306-5540" class="btn-sub" style="width: 100%;">
-          <i class="fa-solid fa-phone-volume"></i> 24시간 친절 전화 상담하기
+        <a href="tel:010-3306-5540" class="btn-sub" id="partnerCallBtn" style="margin-bottom: 10px; width: 100%;">
+          <i class="fa-solid fa-phone-volume"></i> <span id="partnerCallBtnText">24시간 친절 전화 상담하기</span>
         </a>
+        <button onclick="openPartnerModal()" class="btn-main" style="width: 100%; background: linear-gradient(135deg, #7C3AED, #6D28D9); box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> 📱 파트너 전용 : 나만의 홍보페이지 만들기
+        </button>
       </div>
   </main>
 
@@ -1430,11 +1523,11 @@
         </div>
         <div class="info-line">
           <span class="info-label">담당 총괄 :</span>
-          <span class="info-val">공인 공식 파트너 (직통 상담)</span>
+          <span class="info-val" id="footerPartnerName">공인 공식 파트너 (직통 상담)</span>
         </div>
         <div class="info-line">
           <span class="info-label">상담 문의 :</span>
-          <span class="info-val"><strong>010-3306-5540</strong> (24시간 안내)</span>
+          <span class="info-val"><strong id="footerPartnerPhone">010-3306-5540</strong> (24시간 안내)</span>
         </div>
       </div>
 
@@ -1454,18 +1547,77 @@
   <!-- Floating Pill Quick Action Buttons (우측 하단 플로팅 캡슐 알약 버튼 그룹) -->
   <aside class="floating-quick-wrap">
 
+    <!-- 1. 나만의 홍보링크 만들기 (보라색 알약) -->
+    <button onclick="openPartnerModal()" class="pill-action-btn pill-purple" style="cursor: pointer; border: none;">
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <span>내 홍보링크 만들기</span>
+    </button>
+
     <!-- 2. 파트너 0원 회원가입 -->
-    <a href="https://www.enjoy26.com/signup" target="_blank" class="pill-action-btn pill-blue">
+    <a href="https://www.enjoy26.com/signup" target="_blank" class="pill-action-btn pill-blue" id="floatSignupBtn">
       <i class="fa-solid fa-user-plus"></i>
       <span>0원 파트너 가입</span>
     </a>
 
     <!-- 3. 카톡/문자 상담 -->
-    <a href="sms:010-3306-5540?body=AEG 프리머니 프로젝트 사업 문의드립니다." class="pill-action-btn pill-green">
+    <a href="sms:010-3306-5540?body=AEG 프리머니 프로젝트 사업 문의드립니다." class="pill-action-btn pill-green" id="floatSmsBtn">
       <i class="fa-solid fa-comment-dots"></i>
-      <span>1:1 문자·톡 문의</span>
+      <span id="floatSmsText">1:1 문자·톡 문의</span>
     </a>
   </aside>
+
+  <!-- 파트너 전용: 나만의 홍보페이지 생성기 모달 팝업 -->
+  <div class="partner-modal-overlay" id="partnerModalOverlay" onclick="closePartnerModalOnBackdrop(event)">
+    <div class="partner-modal-box">
+      <div class="partner-modal-header">
+        <div class="partner-modal-title">
+          <i class="fa-solid fa-wand-magic-sparkles" style="color: #F59E0B;"></i> 나만의 홍보링크 & 카톡문구 만들기
+        </div>
+        <button class="partner-modal-close" onclick="closePartnerModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="partner-modal-body">
+        <p style="font-size: 13px; color: #94A3B8; margin-bottom: 16px; line-height: 1.6;">
+          내 이름과 연락처, 추천코드를 입력하시면 <strong>내 번호와 내 가입링크로 작동하는 나만의 전용 홈페이지 링크</strong>와 <strong>카톡 홍보문구</strong>가 3초 만에 자동 생성됩니다!
+        </p>
+
+        <div class="partner-input-group">
+          <label>1. 내 이름 또는 닉네임 <span>(필수)</span></label>
+          <input type="text" id="modalInputName" class="partner-input" placeholder="예: 홍길동 (또는 서울 강남센터 홍길동)">
+        </div>
+
+        <div class="partner-input-group">
+          <label>2. 내 휴대폰 번호 <span>(필수 - 전화/문자 직통 연결)</span></label>
+          <input type="tel" id="modalInputPhone" class="partner-input" placeholder="예: 010-1234-5678">
+        </div>
+
+        <div class="partner-input-group">
+          <label>3. 내 enjoy26 추천인 코드 <span>(필수)</span></label>
+          <input type="text" id="modalInputCode" class="partner-input" placeholder="예: 2JL3HD">
+        </div>
+
+        <button class="partner-btn-generate" onclick="generatePartnerLink()">
+          <i class="fa-solid fa-bolt"></i> 원클릭 내 홍보링크 생성하기
+        </button>
+
+        <!-- 결과 영역 -->
+        <div class="partner-result-box" id="partnerResultBox">
+          <div style="font-size: 13px; font-weight: 800; color: #34D399; margin-bottom: 6px;">
+            <i class="fa-solid fa-circle-check"></i> 나만의 전용 홍보링크 완성!
+          </div>
+          <div class="partner-result-url" id="partnerResultUrl"></div>
+
+          <div class="partner-btn-copy-group">
+            <button class="partner-btn-copy-link" onclick="copyPartnerUrl()">
+              <i class="fa-solid fa-link"></i> 링크만 복사
+            </button>
+            <button class="partner-btn-copy-msg" onclick="copyPartnerKakaoMsg()">
+              <i class="fa-solid fa-comment"></i> 카톡 홍보문구 복사
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Copy Toast -->
   <div id="toast">추천인 코드가 복사되었습니다!</div>
@@ -1563,6 +1715,154 @@
         });
       }
     });
+    // ==========================================
+    // 파트너 나만의 홍보페이지 동적 연동 & 생성 스크립트
+    // ==========================================
+
+    // 1. URL 파라미터 확인 및 화면 자동 업데이트 (?name=...&phone=...&code=...)
+    (function applyPartnerParams() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const name = urlParams.get('name');
+      const phone = urlParams.get('phone');
+      const code = urlParams.get('code');
+
+      // (1) 이름 반영
+      if (name && name.trim()) {
+        const cleanName = decodeURIComponent(name.trim());
+        const nameDisplay = document.getElementById('partnerNameDisplay');
+        const roleDisplay = document.getElementById('partnerRoleDisplay');
+        const footerName = document.getElementById('footerPartnerName');
+        if (nameDisplay) nameDisplay.innerText = cleanName + ' 파트너';
+        if (roleDisplay) roleDisplay.innerText = cleanName + ' 파트너 전문 상담';
+        if (footerName) footerName.innerText = cleanName + ' 파트너 (직통 상담)';
+        
+        // 플로팅 상담 버튼 텍스트 변경
+        const floatSmsText = document.getElementById('floatSmsText');
+        if (floatSmsText) floatSmsText.innerText = cleanName + ' 파트너 문의';
+      }
+
+      // (2) 전화번호 반영
+      if (phone && phone.trim()) {
+        const cleanPhone = phone.trim();
+        const phoneDisplay = document.getElementById('partnerPhoneDisplay');
+        const footerPhone = document.getElementById('footerPartnerPhone');
+        const partnerCallBtn = document.getElementById('partnerCallBtn');
+        const floatSmsBtn = document.getElementById('floatSmsBtn');
+        
+        if (phoneDisplay) phoneDisplay.innerText = cleanPhone;
+        if (footerPhone) footerPhone.innerText = cleanPhone;
+        if (partnerCallBtn) {
+          partnerCallBtn.setAttribute('href', 'tel:' + cleanPhone);
+          const callText = document.getElementById('partnerCallBtnText');
+          if (callText) callText.innerText = cleanNameDisplay(name) + ' 직통 전화 상담하기';
+        }
+        if (floatSmsBtn) {
+          const partnerName = name ? decodeURIComponent(name.trim()) : '공식 파트너';
+          floatSmsBtn.setAttribute('href', 'sms:' + cleanPhone + '?body=[' + encodeURIComponent('AEG 프리머니 프로젝트') + '] ' + encodeURIComponent(partnerName + '님, 사업 및 0원 가입 문의드립니다.'));
+        }
+      }
+
+      // (3) 추천인 코드 반영
+      if (code && code.trim()) {
+        const cleanCode = code.trim();
+        const refCodeEl = document.getElementById('refCodeText');
+        if (refCodeEl) refCodeEl.innerText = cleanCode;
+
+        // 가입 버튼 링크 (추천코드 자동 파라미터 연동 또는 일반 회원가입창 이동)
+        const signupUrl = 'https://www.enjoy26.com/signup?referralCode=' + cleanCode;
+        const partnerSignupBtn = document.getElementById('partnerSignupBtn');
+        const floatSignupBtn = document.getElementById('floatSignupBtn');
+        if (partnerSignupBtn) partnerSignupBtn.setAttribute('href', signupUrl);
+        if (floatSignupBtn) floatSignupBtn.setAttribute('href', signupUrl);
+      }
+    })();
+
+    function cleanNameDisplay(name) {
+      return name ? decodeURIComponent(name.trim()) + ' 파트너' : '24시간 친절';
+    }
+
+    // 2. 모달 열기 및 닫기
+    function openPartnerModal() {
+      const modal = document.getElementById('partnerModalOverlay');
+      if (modal) {
+        modal.style.display = 'flex';
+        // 기본값 세팅 (기존 추천코드가 있으면 채워넣기)
+        const curCode = document.getElementById('refCodeText').innerText;
+        if (curCode && !document.getElementById('modalInputCode').value) {
+          document.getElementById('modalInputCode').value = curCode;
+        }
+      }
+    }
+
+    function closePartnerModal() {
+      const modal = document.getElementById('partnerModalOverlay');
+      if (modal) modal.style.display = 'none';
+    }
+
+    function closePartnerModalOnBackdrop(e) {
+      if (e.target.id === 'partnerModalOverlay') {
+        closePartnerModal();
+      }
+    }
+
+    // 3. 나만의 홍보링크 생성 버튼 실행
+    let generatedPartnerUrl = '';
+    let generatedPartnerMsg = '';
+
+    function generatePartnerLink() {
+      const name = document.getElementById('modalInputName').value.trim();
+      const phone = document.getElementById('modalInputPhone').value.trim();
+      const code = document.getElementById('modalInputCode').value.trim();
+
+      if (!name) { alert('이름(또는 닉네임)을 입력해 주세요.'); return; }
+      if (!phone) { alert('휴대폰 번호를 입력해 주세요.'); return; }
+      if (!code) { alert('enjoy26 추천인 코드를 입력해 주세요.'); return; }
+
+      const baseUrl = window.location.origin + window.location.pathname;
+      const params = new URLSearchParams();
+      params.set('name', name);
+      params.set('phone', phone);
+      params.set('code', code);
+
+      generatedPartnerUrl = baseUrl + '?' + params.toString();
+
+      // 카톡 홍보 문구 자동 조립
+      generatedPartnerMsg = `📢 [AEG 프리머니 프로젝트] 자본금 0원 / 월납금 전액 지원!\n\n` +
+        `쇼핑과 대기업 상조가 만나 든든한 평생 자산과 연금 파이프라인이 완성됩니다.\n\n` +
+        `👉 1인 5구좌 월납금(9.9만) 100% 전액 지원\n` +
+        `👉 직추천 1인당 15만원 즉시 + 바이너리 25대 롤업\n` +
+        `👉 가입비 ZERO / 유지비 ZERO / 손실 리스크 0%\n\n` +
+        `👇 ${name} 파트너 전용 상세 안내 페이지:\n` +
+        `${generatedPartnerUrl}\n\n` +
+        `🔑 추천인 코드: ${code}\n` +
+        `📞 직통 상담 문의: ${phone} (${name} 파트너)`;
+
+      // 화면에 표시
+      const urlBox = document.getElementById('partnerResultUrl');
+      const resultBox = document.getElementById('partnerResultBox');
+      if (urlBox) urlBox.innerText = generatedPartnerUrl;
+      if (resultBox) resultBox.style.display = 'block';
+    }
+
+    // 4. 링크 복사
+    function copyPartnerUrl() {
+      if (!generatedPartnerUrl) return;
+      navigator.clipboard.writeText(generatedPartnerUrl).then(() => {
+        showToast('나만의 홍보링크가 복사되었습니다!');
+      }).catch(() => {
+        prompt('아래 링크를 복사하여 사용하세요:', generatedPartnerUrl);
+      });
+    }
+
+    // 5. 카톡 홍보문구 복사
+    function copyPartnerKakaoMsg() {
+      if (!generatedPartnerMsg) return;
+      navigator.clipboard.writeText(generatedPartnerMsg).then(() => {
+        showToast('카톡 홍보문구가 복사되었습니다! 카톡에 붙여넣기 하세요.');
+      }).catch(() => {
+        prompt('아래 문구를 복사하여 사용하세요:', generatedPartnerMsg);
+      });
+    }
   </script>
 
 </body>
