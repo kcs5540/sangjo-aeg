@@ -1750,10 +1750,16 @@
         if (phoneDisplay) phoneDisplay.innerText = cleanPhone;
         if (footerPhone) footerPhone.innerText = cleanPhone;
         if (partnerCallBtn) {
-          partnerCallBtn.setAttribute('href', 'tel:' + cleanPhone);
           const callText = document.getElementById('partnerCallBtnText');
           if (callText) callText.innerText = cleanNameDisplay(name) + ' 직통 전화 상담하기';
         }
+
+        // 페이지 내의 모든 전화 연결 링크(Hero 슬라이드 문의 버튼 포함) 일괄 교체
+        const allTelLinks = document.querySelectorAll('a[href^="tel:"]');
+        allTelLinks.forEach(link => {
+          link.setAttribute('href', 'tel:' + cleanPhone);
+        });
+
         if (floatSmsBtn) {
           const partnerName = name ? decodeURIComponent(name.trim()) : '공식 파트너';
           floatSmsBtn.setAttribute('href', 'sms:' + cleanPhone + '?body=[' + encodeURIComponent('AEG 프리머니 프로젝트') + '] ' + encodeURIComponent(partnerName + '님, 사업 및 0원 가입 문의드립니다.'));
