@@ -826,12 +826,9 @@
           <li><a href="#materials" style="color: #FDE68A;"><i class="fa-solid fa-folder-open" style="color: var(--gold);"></i> 영업자료실</a></li>
         </ul>
         
-        <!-- 우측 끝 버튼 그룹 (내 홍보링크 만들기 + 무료가입) -->
-        <div class="nav-right-btn-wrap" style="display: flex; align-items: center; gap: 8px;">
-          <button onclick="openPartnerModal()" class="nav-menu-btn" style="background: linear-gradient(135deg, #7C3AED, #6D28D9); border-color: rgba(216, 180, 254, 0.5); cursor: pointer;">
-            <i class="fa-solid fa-wand-magic-sparkles"></i> 내 홍보링크 만들기
-          </button>
-          <a href="https://www.enjoy26.com/signup" target="_blank" class="nav-menu-btn">
+        <!-- 우측 끝 무료가입 버튼 -->
+        <div class="nav-right-btn-wrap">
+          <a href="https://www.enjoy26.com/signup" target="_blank" class="nav-menu-btn" id="navSignupBtn">
             <i class="fa-solid fa-user-plus"></i> 무료가입
           </a>
         </div>
@@ -846,11 +843,6 @@
 
   <!-- Mobile Drawer Menu -->
   <div class="mobile-drawer" id="mobileDrawer">
-    <div style="padding: 10px 14px 4px;">
-      <button onclick="toggleMenu(); openPartnerModal();" style="width: 100%; padding: 12px; border-radius: 10px; background: linear-gradient(135deg, #7C3AED, #6D28D9); color: #FFF; font-weight: 800; font-size: 14px; border: 1.5px solid rgba(216, 180, 254, 0.6); display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);">
-        <i class="fa-solid fa-wand-magic-sparkles" style="color: #FDE68A;"></i> ✨ 나만의 홍보링크 만들기
-      </button>
-    </div>
     <a href="#about-aeg" onclick="toggleMenu()"><i class="fa-solid fa-building"></i> AEG 회사 소개</a>
     <a href="#benefits" onclick="toggleMenu()"><i class="fa-solid fa-gift"></i> 상조 5구좌 멤버십 혜택</a>
     <a href="#compensation" onclick="toggleMenu()"><i class="fa-solid fa-coins"></i> 보상플랜 및 연금</a>
@@ -968,14 +960,9 @@
           <span class="text-freemoney" style="font-size: 16px;">Free Money Project</span>
           <p style="font-size: 13px; color: #CBD5E1; margin-top: 2px;">진입비용 0원 + 15개월 전액 지원 + 자동 바이너리 수익</p>
         </div>
-        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-          <button onclick="openPartnerModal()" class="btn-sub" style="padding: 8px 14px; font-size: 12.5px; border-color: #8B5CF6; color: #DDD6FE; background: rgba(139, 92, 246, 0.2); cursor: pointer;">
-            <i class="fa-solid fa-wand-magic-sparkles" style="color: #F59E0B;"></i> 내 홍보링크 만들기
-          </button>
-          <a href="#freemoney-intro" class="btn-sub" style="padding: 8px 14px; font-size: 12.5px; border-color: rgba(245, 158, 11, 0.5); color: #FDE68A; background: rgba(245, 158, 11, 0.15);">
-            AEG 자세히 알아보기 <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i>
-          </a>
-        </div>
+        <a href="#freemoney-intro" class="btn-sub" style="padding: 8px 16px; font-size: 13px; border-color: rgba(245, 158, 11, 0.5); color: #FDE68A; background: rgba(245, 158, 11, 0.15);">
+          AEG 자세히 알아보기 <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i>
+        </a>
       </div>
     </div>
 
@@ -1495,12 +1482,9 @@
         <a href="https://www.enjoy26.com/signup" target="_blank" class="btn-main" id="partnerSignupBtn" style="margin-bottom: 10px; width: 100%;">
           <i class="fa-solid fa-paper-plane"></i> 엔조이26 무료 회원가입 바로가기
         </a>
-        <a href="tel:010-3306-5540" class="btn-sub" id="partnerCallBtn" style="margin-bottom: 10px; width: 100%;">
+        <a href="tel:010-3306-5540" class="btn-sub" id="partnerCallBtn" style="width: 100%;">
           <i class="fa-solid fa-phone-volume"></i> <span id="partnerCallBtnText">24시간 친절 전화 상담하기</span>
         </a>
-        <button onclick="openPartnerModal()" class="btn-main" style="width: 100%; background: linear-gradient(135deg, #7C3AED, #6D28D9); box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);">
-          <i class="fa-solid fa-wand-magic-sparkles"></i> 📱 파트너 전용 : 나만의 홍보페이지 만들기
-        </button>
       </div>
   </main>
 
@@ -1553,6 +1537,13 @@
       <div class="footer-copy">
         Copyright © AEG (Ace Entertainment Global) & Free Money Project. All Rights Reserved.
       </div>
+
+      <!-- 푸터 하단 파트너 전용 관리 링크 (대표님 직접 생성용) -->
+      <div style="text-align: center; margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+        <button onclick="openPartnerModal()" style="background: none; border: 1px solid #334155; color: #64748B; font-size: 11.5px; padding: 5px 12px; border-radius: 6px; cursor: pointer; transition: all 0.2s;">
+          <i class="fa-solid fa-gear" style="color: #94A3B8;"></i> 파트너 홍보링크 발급 도구
+        </button>
+      </div>
     </div>
   </footer>
 
@@ -1560,19 +1551,13 @@
   <!-- Floating Pill Quick Action Buttons (우측 하단 플로팅 캡슐 알약 버튼 그룹) -->
   <aside class="floating-quick-wrap">
 
-    <!-- 1. 나만의 홍보링크 만들기 (보라색 알약) -->
-    <button onclick="openPartnerModal()" class="pill-action-btn pill-purple" style="cursor: pointer; border: none;">
-      <i class="fa-solid fa-wand-magic-sparkles"></i>
-      <span>내 홍보링크 만들기</span>
-    </button>
-
-    <!-- 2. 파트너 0원 회원가입 -->
+    <!-- 1. 파트너 0원 회원가입 -->
     <a href="https://www.enjoy26.com/signup" target="_blank" class="pill-action-btn pill-blue" id="floatSignupBtn">
       <i class="fa-solid fa-user-plus"></i>
       <span>0원 파트너 가입</span>
     </a>
 
-    <!-- 3. 카톡/문자 상담 -->
+    <!-- 2. 카톡/문자 상담 -->
     <a href="sms:010-3306-5540?body=AEG 프리머니 프로젝트 사업 문의드립니다." class="pill-action-btn pill-green" id="floatSmsBtn">
       <i class="fa-solid fa-comment-dots"></i>
       <span id="floatSmsText">1:1 문자·톡 문의</span>
@@ -1584,32 +1569,32 @@
     <div class="partner-modal-box">
       <div class="partner-modal-header">
         <div class="partner-modal-title">
-          <i class="fa-solid fa-wand-magic-sparkles" style="color: #F59E0B;"></i> 나만의 홍보링크 & 카톡문구 만들기
+          <i class="fa-solid fa-wand-magic-sparkles" style="color: #F59E0B;"></i> 산하 파트너 홍보링크 발급 도구
         </div>
         <button class="partner-modal-close" onclick="closePartnerModal()"><i class="fa-solid fa-xmark"></i></button>
       </div>
       <div class="partner-modal-body">
         <p style="font-size: 13px; color: #94A3B8; margin-bottom: 16px; line-height: 1.6;">
-          내 이름과 연락처, 추천코드를 입력하시면 <strong>내 번호와 내 가입링크로 작동하는 나만의 전용 홈페이지 링크</strong>와 <strong>카톡 홍보문구</strong>가 3초 만에 자동 생성됩니다!
+          전달하실 <strong>산하 파트너의 성명, 휴대폰 번호, 추천인 코드</strong>를 입력하시면, 해당 파트너의 정보와 추천코드가 담긴 <strong>전용 홈페이지 링크 및 카톡 전달 문구</strong>가 즉시 생성됩니다.
         </p>
 
         <div class="partner-input-group">
-          <label>1. 내 이름 또는 닉네임 <span>(필수)</span></label>
-          <input type="text" id="modalInputName" class="partner-input" placeholder="예: 홍길동 (또는 서울 강남센터 홍길동)">
+          <label>1. 파트너 성명 또는 닉네임 <span>(필수)</span></label>
+          <input type="text" id="modalInputName" class="partner-input" placeholder="예: 김영희 (또는 경기 수원센터 김영희)">
         </div>
 
         <div class="partner-input-group">
-          <label>2. 내 휴대폰 번호 <span>(필수 - 전화/문자 직통 연결)</span></label>
+          <label>2. 파트너 휴대폰 번호 <span>(필수 - 전화/문자 직통 연결)</span></label>
           <input type="tel" id="modalInputPhone" class="partner-input" placeholder="예: 010-1234-5678">
         </div>
 
         <div class="partner-input-group">
-          <label>3. 내 enjoy26 추천인 코드 <span>(필수)</span></label>
-          <input type="text" id="modalInputCode" class="partner-input" placeholder="예: 2JL3HD">
+          <label>3. 파트너 enjoy26 추천인 코드 <span>(필수 - 가입링크 자동연결)</span></label>
+          <input type="text" id="modalInputCode" class="partner-input" placeholder="예: QZDLSY">
         </div>
 
         <button class="partner-btn-generate" onclick="generatePartnerLink()">
-          <i class="fa-solid fa-bolt"></i> 원클릭 내 홍보링크 생성하기
+          <i class="fa-solid fa-bolt"></i> 파트너 맞춤 홍보링크 생성하기
         </button>
 
         <!-- 결과 영역 -->
@@ -1775,18 +1760,25 @@
         }
       }
 
-      // (3) 추천인 코드 반영
+      // (3) 추천인 코드 반영 -> 사이트 내 모든 회원가입 버튼에 100% 자동 연결!
       if (code && code.trim()) {
         const cleanCode = code.trim();
         const refCodeEl = document.getElementById('refCodeText');
         if (refCodeEl) refCodeEl.innerText = cleanCode;
 
-        // 가입 버튼 링크 (추천코드 자동 파라미터 연동 또는 일반 회원가입창 이동)
+        // https://www.enjoy26.com/signup?referralCode=코드
         const signupUrl = 'https://www.enjoy26.com/signup?referralCode=' + cleanCode;
-        const partnerSignupBtn = document.getElementById('partnerSignupBtn');
-        const floatSignupBtn = document.getElementById('floatSignupBtn');
-        if (partnerSignupBtn) partnerSignupBtn.setAttribute('href', signupUrl);
-        if (floatSignupBtn) floatSignupBtn.setAttribute('href', signupUrl);
+        
+        // 페이지 내의 모든 enjoy26 가입 링크를 찾아 해당 추천인 코드로 일괄 교체
+        const allSignupLinks = document.querySelectorAll('a[href*="enjoy26.com/signup"]');
+        allSignupLinks.forEach(link => {
+          link.setAttribute('href', signupUrl);
+        });
+      }
+
+      // (4) 만약 관리자용 모달 호출 파라미터가 있으면 모달 자동 오픈
+      if (urlParams.get('openModal') === '1') {
+        setTimeout(openPartnerModal, 300);
       }
     })();
 
@@ -1839,7 +1831,8 @@
 
       generatedPartnerUrl = baseUrl + '?' + params.toString();
 
-      // 카톡 홍보 문구 자동 조립
+      // 카톡 홍보 문구 자동 조립 (홈페이지 링크 + 직접 가입링크 모두 포함)
+      const directSignupUrl = `https://www.enjoy26.com/signup?referralCode=${code}`;
       generatedPartnerMsg = `📢 [AEG 프리머니 프로젝트] 자본금 0원 / 월납금 전액 지원!\n\n` +
         `쇼핑과 대기업 상조가 만나 든든한 평생 자산과 연금 파이프라인이 완성됩니다.\n\n` +
         `👉 1인 5구좌 월납금(9.9만) 100% 전액 지원\n` +
@@ -1847,7 +1840,9 @@
         `👉 가입비 ZERO / 유지비 ZERO / 손실 리스크 0%\n\n` +
         `👇 ${name} 파트너 전용 상세 안내 페이지:\n` +
         `${generatedPartnerUrl}\n\n` +
-        `🔑 추천인 코드: ${code}\n` +
+        `👉 0원 무료회원 바로가입 링크:\n` +
+        `${directSignupUrl}\n` +
+        `(추천인 코드: ${code})\n\n` +
         `📞 직통 상담 문의: ${phone} (${name} 파트너)`;
 
       // 화면에 표시
